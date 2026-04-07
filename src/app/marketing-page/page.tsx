@@ -1,3 +1,5 @@
+import HeroWelcome from "@/src/components/marketing-page/HeroWelcome";
+
 export default function page() {
-  return <h1>test</h1>;
+  return <HeroWelcome />;
 }

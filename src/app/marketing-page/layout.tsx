@@ -1,20 +1,28 @@
-import Navbar from "../../layout/Navbar";
+import { EB_Garamond, Space_Grotesk } from "next/font/google";
 
-export default function DashboardLayout({
+const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-eb-garamond",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500"],
+  variable: "--font-space-grotesk",
+});
+
+export default function TestingPageLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        {/* Layout UI */}
-        {/* Place children where you want to render a page or nested layout */}
-
-        <Navbar />
-
-        <main>{children}</main>
-      </body>
-    </html>
+    <div
+      className={`${ebGaramond.variable} ${spaceGrotesk.variable} min-h-screen`}
+    >
+      {children}
+    </div>
   );
 }
