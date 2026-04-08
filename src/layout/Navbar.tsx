@@ -64,7 +64,7 @@ export default function Navbar({
 
         {/* Center Logo */}
         <Link
-          href="#"
+          href="/"
           aria-label="Il Foro – go to homepage"
           className="flex shrink-0 items-center transition-opacity duration-200 hover:opacity-80"
         >

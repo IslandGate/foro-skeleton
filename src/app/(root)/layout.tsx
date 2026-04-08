@@ -1,5 +1,6 @@
 import { EB_Garamond, Space_Grotesk } from "next/font/google";
 import Navbar from "@/src/layout/Navbar"
+import Footer from "@/src/layout/Footer"
 
 const ebGaramond = EB_Garamond({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function TestingPageLayout({
     >
       <Navbar />
       {children}
+      <Footer />
     </div>
   );
 }
