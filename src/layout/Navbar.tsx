@@ -5,7 +5,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import NewsletterIcon from "@/src/assets/icons/newsletter-icon.svg";
 
 export interface NavLink {
   label: string;
@@ -31,6 +30,25 @@ const groteskStyle: React.CSSProperties = {
   fontFamily:
     "var(--font-space-grotesk, 'Space Grotesk', system-ui, sans-serif)",
 };
+
+function NewsletterIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 23.9719 22.4841"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M12.3922,5.7875c0,-1.1655 -0.45,-2.2831 -1.24,-3.1071c-0.8,-0.824 -1.88,-1.287 -3.01,-1.287h-6.38v16.4771h7.44c0.85,0 1.66,0.348 2.26,0.966c0.6,0.618 0.93,1.456 0.93,2.33M12.3922,5.7875v15.379M12.3922,5.7875c0,-1.1655 0.45,-2.2831 1.25,-3.1071c0.79,-0.824 1.88,-1.287 3,-1.287h6.38v16.4771h-7.44c-0.84,0 -1.66,0.348 -2.25,0.966c-0.6,0.618 -0.94,1.456 -0.94,2.33"
+        stroke="#F0EAD8"
+        strokeWidth="2.71818"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function Navbar({
   links = defaultLinks,

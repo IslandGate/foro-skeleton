@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@500;700&family=Inter:wght@500&display=swap');
+
 @import "tailwindcss";
 
 :root {
@@ -27,6 +29,35 @@
   }
   to {
     transform: translateX(-100%);
+  }
+}
+
+@theme {
+  --font-garamond: 'EB Garamond', serif;
+  --font-space-grotesk: 'Space Grotesk', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+@utility scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@utility marquee-track {
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+
+  &:hover {
+    animation-play-state: paused;
   }
 }
 
