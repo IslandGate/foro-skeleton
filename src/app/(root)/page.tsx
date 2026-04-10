@@ -7,9 +7,9 @@ export default function page() {
   return (
     <>
       <HeroWelcome />
+      <HeroCatalogueSection />
       <HeroAboutUs />
       <HerousedByStudents />
-      <HeroCatalogueSection />
     </>
   );
 }
