@@ -104,7 +104,7 @@ function LoginForm() {
           <div className="flex justify-center lg:justify-start">
             <Link href="/">
               <Image
-                src="/logo.png"
+                src="/marketing-page-assets/il-foro-logo.png"
                 alt="Il Foro Logo"
                 width={213}
                 height={213}
@@ -177,7 +177,7 @@ function LoginForm() {
               >
                 <span>{loading ? 'Logging in...' : 'Log In'}</span>
                 <Image
-                  src="/arrow-right.svg"
+                  src="/marketing-page-assets/HeroWelcome-assets/arrow-up-right.svg"
                   alt="Arrow"
                   width={13}
                   height={14}

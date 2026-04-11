@@ -20,6 +20,12 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
+  --color-brand-accent: #834a4a;
+  --color-olive: #4b4b30;
+  --color-mauve: #834a4a;
+  --color-cream: #f0ead8;
+  --color-dark-gray: #374151;
+
   --size-7_5xl: 88rem;
 }
 
