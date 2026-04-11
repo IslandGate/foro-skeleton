@@ -1,4 +1,4 @@
-// Proper links need to be filled 
+// Proper links need to be filled
 
 "use client";
 
@@ -19,7 +19,7 @@ export interface NavbarProps {
   newsletterLabel?: string;
 }
 
-// Hrefs need to match! 
+// Hrefs need to match!
 const defaultLinks: NavLink[] = [
   { label: "About", href: "/about" },
   { label: "For Hosts", href: "/for-hosts" },
@@ -65,7 +65,7 @@ export default function Navbar({
   return (
     <nav className="relative w-full bg-white" aria-label="Main navigation">
       {/* ── Main row ── */}
-      <div className="mx-auto flex h-[80px] w-full max-w-[1193px] items-center justify-between px-6 lg:h-[213px] lg:justify-center lg:gap-[100px]">
+      <div className="flex justify-center items-center gap-30 relative w-full h-full">
         {/* Left Links (Desktop) */}
         <div className="hidden items-center gap-[100px] lg:flex">
           {leftLinks.map((link) => (
@@ -73,7 +73,7 @@ export default function Navbar({
               key={link.href}
               href={link.href}
               style={groteskStyle}
-              className="text-[27px] font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              className="text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               {link.label}
             </Link>
@@ -92,7 +92,7 @@ export default function Navbar({
             width={213}
             height={213}
             priority
-            className="h-[60px] w-auto object-contain lg:h-[213px]"
+            className="h-50 w-auto object-contain lg:h-[213px]"
           />
         </Link>
 
@@ -103,7 +103,7 @@ export default function Navbar({
               key={link.href}
               href={link.href}
               style={groteskStyle}
-              className="text-[27px] font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              className="text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               {link.label}
             </Link>
@@ -202,4 +202,3 @@ export default function Navbar({
     </nav>
   );
 }
-
