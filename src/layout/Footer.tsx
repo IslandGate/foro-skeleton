@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -22,20 +20,12 @@ const LEGAL_LINKS = [
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <footer className="w-full bg-cream">
-      <div className="mx-auto flex max-w-[1440px] flex-col justify-start gap-25 px-[30px] py-10 md:flex-row">
+      <div className="mx-auto flex max-w-screen-2xl flex-col justify-start gap-24 px-8 py-10 md:flex-row">
         {/* Left Column */}
         <div className="flex flex-col items-start gap-4">
-          <button
-            onClick={handleScrollToTop}
-            className="cursor-pointer transition-opacity hover:opacity-80"
-            aria-label="Scroll to top"
-          >
+          <Link href="#" aria-label="Scroll to top" className="transition-opacity hover:opacity-80">
             <Image
               src="/marketing-page-assets/il-foro-logo-no-padding.png"
               alt="Il Foro Logo"
@@ -43,10 +33,10 @@ export default function Footer() {
               height={200}
               className="h-auto w-auto object-contain object-left"
             />
-          </button>
+          </Link>
 
           <p
-            className="max-w-[500px] text-xl font-medium leading-relaxed text-black/50"
+            className="max-w-lg text-xl font-medium leading-relaxed text-black/50"
             style={groteskStyle}
           >
             A centralised solution to finding competitions in fields of your
@@ -54,14 +44,14 @@ export default function Footer() {
           </p>
 
           <p
-            className="max-w-[400px] text-xl font-medium text-black/50"
+            className="max-w-md text-xl font-medium text-black/50"
             style={groteskStyle}
           >
             &copy; {currentYear} ilforo LLC. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4">
-            <a
+            
               href="https://www.linkedin.com/company/ilforo"
               target="_blank"
               rel="noopener noreferrer"
@@ -71,11 +61,11 @@ export default function Footer() {
               <Image
                 src="/marketing-page-assets/HeroWelcome-assets/linkedin.svg"
                 alt="LinkedIn"
-                width={31}
-                height={31}
+                width={32}
+                height={32}
               />
             </a>
-            <a
+            
               href="https://www.instagram.com/ilforo.web/"
               target="_blank"
               rel="noopener noreferrer"
@@ -85,11 +75,11 @@ export default function Footer() {
               <Image
                 src="/marketing-page-assets/HeroWelcome-assets/instagram.svg"
                 alt="Instagram"
-                width={31}
-                height={31}
+                width={32}
+                height={32}
               />
             </a>
-            <a
+            
               href="mailto:contact@ilforo.com"
               aria-label="Email"
               className="transition-opacity hover:opacity-70"
@@ -97,15 +87,15 @@ export default function Footer() {
               <Image
                 src="/marketing-page-assets/Footer Assets/mail.svg"
                 alt="Email"
-                width={37}
-                height={37}
+                width={32}
+                height={32}
               />
             </a>
           </div>
         </div>
 
         {/* Right Column – Legal */}
-        <div className="flex flex-col gap-3 pt-[69px]">
+        <div className="flex flex-col gap-3 mt-16">
           <h3
             className="text-4xl font-semibold text-black"
             style={garamondStyle}
