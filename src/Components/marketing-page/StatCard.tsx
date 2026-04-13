@@ -14,40 +14,41 @@ const garamondStyle: React.CSSProperties = {
  * StatCard Component
  * Reusable component for displaying individual statistics
  * Supports optional star icon for ratings
- *
- * Dimensions follow Figma exactly:
- * - Stat 1 (Competitions): 383x146px
- * - Stat 2 (Users): 260x146px
- * - Stat 3 (Rating): 275x146px
  */
 export function StatCard({ value, label, hasIcon = false }: StatCardProps) {
-  // Determine width based on label for Figma accuracy
-  const getWidth = () => {
-    if (label.includes("Competitions")) return "w-[383px]";
-    if (label.includes("Active")) return "w-[260px]";
-    return "w-[275px]";
+  // Determine min-width based on label, allowing it to adapt on smaller screens
+  const getMinWidth = () => {
+    if (label.includes("Competitions")) return "min-w-full md:min-w-[383px]";
+    if (label.includes("Active")) return "min-w-full md:min-w-[260px]";
+    return "min-w-full md:min-w-[275px]";
   };
 
   return (
-    <div className={`flex flex-col items-center gap-0 h-[146px] ${getWidth()}`}>
-      {/* Statistic Value - Exact Figma: 73px height, 128px font, 72px line-height */}
-      <div className="h-[73px] flex items-center justify-center w-full">
+    <div className={`flex flex-col items-center gap-2 py-4 ${getMinWidth()}`}>
+      {/* Statistic Value */}
+      <div className="flex items-center justify-center w-full">
         <span
-          className="text-[128px] font-normal leading-[72px] tracking-tight text-black whitespace-nowrap"
+          className="text-7xl md:text-[128px] font-normal leading-18 tracking-tight text-black whitespace-nowrap flex items-center"
           style={garamondStyle}
         >
           {value}
           {hasIcon && (
-            <span className="text-[100px] ml-1 align-middle inline-block relative -top-1">
-              ★
-            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-[0.75em] h-[0.75em] ml-2 inline-block relative -top-1"
+              aria-label="Rating Star"
+            >
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
           )}
         </span>
       </div>
 
-      {/* Statistic Label - Exact Figma: 73px height, 36px font, 72px line-height, center aligned */}
+      {/* Statistic Label */}
       <p
-        className="text-[36px] font-normal leading-[72px] text-center w-full h-[73px] text-black"
+        className="text-2xl md:text-[36px] font-normal leading-18 text-center w-full text-black"
         style={garamondStyle}
       >
         {label}
