@@ -23,7 +23,7 @@ const DEFAULT_STATISTICS: StatisticItem[] = [
 export default function HeroAboutUs({
   titlePrefix = "About",
   titleEmphasis = "us",
-  logoSrc = "/marketing-page-assets/il-foro-logo.png",
+  logoSrc = "/marketing-page-assets/Il-Foro-Logo-No-Padding.png",
   logoAlt = "Il Foro Logo",
   logoWidth = 393,
   logoHeight = 393,
