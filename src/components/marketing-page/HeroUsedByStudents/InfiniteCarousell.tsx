@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { UNIVERSITY_LOGOS } from "@/src/constants/universityLogos";
+import { UNIVERSITY_LOGOS } from "@/src/constants/UniversityLogos";
 
 const logos = UNIVERSITY_LOGOS.map((logo) => (
   <div
@@ -21,18 +21,12 @@ const logos = UNIVERSITY_LOGOS.map((logo) => (
 
 export default function InfiniteCarousel() {
   return (
-    <div className="w-full overflow-hidden flex flex-nowrap py-8">
+    <div className="w-full overflow-hidden py-8">
       <div
-        className="flex min-w-max gap-6"
+        className="flex gap-6"
         style={{ animation: "infinite-scroll 30s linear infinite" }}
       >
         {logos}
-      </div>
-      <div
-        className="flex min-w-max gap-6"
-        aria-hidden="true"
-        style={{ animation: "infinite-scroll 30s linear infinite" }}
-      >
         {logos}
       </div>
     </div>
