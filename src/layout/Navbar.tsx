@@ -63,7 +63,7 @@ export default function Navbar({
   const rightLinks = links.slice(2);
 
   return (
-    <nav className="relative w-full bg-white" aria-label="Main navigation">
+    <nav className="relative w-full bg-white m-10" aria-label="Main navigation">
       {/* ── Main row ── */}
       <div className="flex justify-center items-center gap-30 relative w-full h-full">
         {/* Left Links (Desktop) */}
@@ -92,7 +92,7 @@ export default function Navbar({
             width={213}
             height={213}
             priority
-            className="h-50 w-auto object-contain lg:h-52"
+            className="h-auto w-24 sm:w-32 lg:w-48 object-contain"
           />
         </Link>
 

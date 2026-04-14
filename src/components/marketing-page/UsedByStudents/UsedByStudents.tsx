@@ -1,5 +1,5 @@
 import React from "react";
-import InfiniteCarousel from "./InfiniteCarousell";
+import InfiniteCarousel from "./InfiniteCarousel";
 
 const garamondStyle: React.CSSProperties = {
   fontFamily: "var(--font-eb-garamond, 'EB Garamond', Georgia, serif)",

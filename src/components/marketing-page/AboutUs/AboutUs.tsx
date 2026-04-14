@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { StatCard } from "../StatCard";
-import type { HeroAboutUsProps, StatisticItem } from "./HeroAboutUs.types";
+import type { HeroAboutUsProps, StatisticItem } from "./AboutUs.types";
 
 const garamondStyle: React.CSSProperties = {
   fontFamily: "var(--font-eb-garamond, 'EB Garamond', Georgia, serif)",
@@ -23,7 +23,7 @@ const DEFAULT_STATISTICS: StatisticItem[] = [
 export default function HeroAboutUs({
   titlePrefix = "About",
   titleEmphasis = "us",
-  logoSrc = "/marketing-page-assets/Il-Foro-Logo-No-Padding.png",
+  logoSrc = "/marketing-page-assets/il-foro-logo.png",
   logoAlt = "Il Foro Logo",
   logoWidth = 393,
   logoHeight = 393,
