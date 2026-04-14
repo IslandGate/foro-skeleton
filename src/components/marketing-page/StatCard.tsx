@@ -6,10 +6,6 @@ interface StatCardProps {
   hasIcon?: boolean;
 }
 
-const garamondStyle: React.CSSProperties = {
-  fontFamily: "var(--font-eb-garamond, 'EB Garamond', Georgia, serif)",
-};
-
 /**
  * StatCard Component
  * Reusable component for displaying individual statistics
@@ -28,8 +24,7 @@ export function StatCard({ value, label, hasIcon = false }: StatCardProps) {
       {/* Statistic Value */}
       <div className="flex items-center justify-center w-full">
         <span
-          className="text-7xl md:text-[128px] font-normal leading-18 tracking-tight text-black whitespace-nowrap flex items-center"
-          style={garamondStyle}
+          className="font-garamond text-7xl md:text-[128px] font-normal leading-18 tracking-tight text-black whitespace-nowrap flex items-center"
         >
           {value}
           {hasIcon && (
@@ -48,8 +43,7 @@ export function StatCard({ value, label, hasIcon = false }: StatCardProps) {
 
       {/* Statistic Label */}
       <p
-        className="text-2xl md:text-[36px] font-normal leading-18 text-center w-full text-black"
-        style={garamondStyle}
+        className="font-garamond text-2xl md:text-[36px] font-normal leading-18 text-center w-full text-black"
       >
         {label}
       </p>
