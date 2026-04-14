@@ -22,11 +22,12 @@ export default function HeroFourWays() {
   return (
     <section
       className="relative w-full min-h-screen overflow-hidden px-4 py-6 sm:px-8 md:px-12 lg:px-20"
-      // Added a background color that mimics the Figma tone. 
+      // Added a background color that mimics the Figma tone.
       // Update the url() below with your actual painting background asset!
       style={{
         backgroundColor: "#E4DDCB",
-        backgroundImage: "url('/marketing-page-assets/bg-painting-placeholder.jpg')",
+        backgroundImage:
+          "url('/marketing-page-assets/bg-painting-placeholder.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -39,22 +40,21 @@ export default function HeroFourWays() {
         {/* Section Heading */}
         <h2
           id="four-ways-heading"
-          className="mb-12 max-w-[55rem] text-left text-[clamp(2.5rem,5vw,4.8rem)] font-medium leading-[1.05] text-black md:mb-20"
+          className="mb-12 text-left text-[clamp(2.5rem,5vw,4.8rem)] font-medium leading-[1.05] text-black md:mb-20"
           style={garamondStyle}
         >
-          Four ways{" "}
+            Four ways {" "} 
           <span
-            className="italic"
-            style={{ color: "var(--color-brand-accent, #5c3d2e)" }}
+            className="italic text-mauve"
           >
             Il Foro
           </span>{" "}
-          makes it easier to find academic competitions
+          makes it easier to find
+          <br /> <span className="text-mauve">academic competitions </span>
         </h2>
 
         {/* 2-Column Staggered Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 lg:gap-24 items-start pb-20">
-          
           {/* Left Column */}
           <div className="flex flex-col gap-10 md:gap-16 lg:gap-24 w-full">
             <div className="w-full relative">
@@ -98,7 +98,6 @@ export default function HeroFourWays() {
               />
             </div>
           </div>
-
         </div>
       </div>
     </section>
