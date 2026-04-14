@@ -13,7 +13,7 @@ export default function HeroUsedByStudents() {
       >
         {/* Heading: "Used By Students At" */}
         <h2
-          className="font-garamond font-medium text-black text-[clamp(36px,5.35vw,77px)] leading-1"
+          className="font-garamond font-medium text-black text-[clamp(36px,5.35vw,77px)] leading-1 pb-4"
         >
           <span>Used By </span>
           <em className="text-cream italic">
