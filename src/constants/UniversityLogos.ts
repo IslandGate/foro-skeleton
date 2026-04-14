@@ -11,20 +11,26 @@ export const UNIVERSITY_LOGOS: UniversityLogo[] = [
     name: "Harvard University",
     path: "/marketing-page-assets/HeroUsedByStudents-assets/UniversityLogos/Harvard.svg",
   },
+  // {
+  //   id: "yale",
+  //   name: "Yale University",
+  //   path: "/marketing-page-assets/HeroUsedByStudents-assets/UniversityLogos/Yale.svg",
+  // },
+  // {
+  //   id: "stanford",
+  //   name: "Stanford University",
+  //   path: "/marketing-page-assets/HeroUsedByStudents-assets/UniversityLogos/Stanford.svg",
+  // },
+  // {
+  //   id: "mit",
+  //   name: "MIT",
+  //   path: "/marketing-page-assets/HeroUsedByStudents-assets/UniversityLogos/MIT.svg",
+  // },
+  // MISSING SVGS
   {
-    id: "yale",
-    name: "Yale University",
-    path: "/marketing-page-assets/HeroUsedByStudents-assets/UniversityLogos/Yale.svg",
-  },
-  {
-    id: "stanford",
-    name: "Stanford University",
-    path: "/marketing-page-assets/HeroUsedByStudents-assets/UniversityLogos/Stanford.svg",
-  },
-  {
-    id: "mit",
-    name: "MIT",
-    path: "/marketing-page-assets/HeroUsedByStudents-assets/UniversityLogos/MIT.svg",
+    id: "cambridge",
+    name: "University of Cambridge",
+    path: "/marketing-page-assets/HeroUsedByStudents-assets/UniversityLogos/Cambridge.svg",
   },
   {
     id: "uchicago",
@@ -35,6 +41,12 @@ export const UNIVERSITY_LOGOS: UniversityLogo[] = [
     id: "umich",
     name: "University of Michigan",
     path: "/marketing-page-assets/HeroUsedByStudents-assets/UniversityLogos/UMich.svg",
+  },
+
+  {
+    id: "columbia",
+    name: "Columbia University",
+    path: "/marketing-page-assets/HeroUsedByStudents-assets/UniversityLogos/Columbia.svg",
   },
   {
     id: "hkust",
