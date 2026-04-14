@@ -21,13 +21,19 @@ const logos = UNIVERSITY_LOGOS.map((logo) => (
 
 export default function InfiniteCarousel() {
   return (
-    <div className="w-full overflow-hidden py-8">
+    <div className="w-full overflow-hidden py-8 flex flex-horizontal">
       <div
         className="flex gap-6"
-        style={{ animation: "infinite-scroll 30s linear infinite" }}
+        style={{ animation: "infinite-scroll 10s linear infinite" }}
       >
         {logos}
-        {logos}
+        
+      </div>
+      <div
+        className="flex gap-6 left-[-100%] ml-6"
+        style={{ animation: "infinite-scroll 10s linear infinite" }}
+      >
+      {logos}
       </div>
     </div>
   );
