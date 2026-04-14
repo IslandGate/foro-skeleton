@@ -41,7 +41,7 @@ function NewsletterIcon(props: React.SVGProps<SVGSVGElement>) {
     >
       <path
         d="M12.3922,5.7875c0,-1.1655 -0.45,-2.2831 -1.24,-3.1071c-0.8,-0.824 -1.88,-1.287 -3.01,-1.287h-6.38v16.4771h7.44c0.85,0 1.66,0.348 2.26,0.966c0.6,0.618 0.93,1.456 0.93,2.33M12.3922,5.7875v15.379M12.3922,5.7875c0,-1.1655 0.45,-2.2831 1.25,-3.1071c0.79,-0.824 1.88,-1.287 3,-1.287h6.38v16.4771h-7.44c-0.84,0 -1.66,0.348 -2.25,0.966c-0.6,0.618 -0.94,1.456 -0.94,2.33"
-        stroke="#F0EAD8"
+        stroke="currentColor"
         strokeWidth="2.71818"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -54,7 +54,7 @@ export default function Navbar({
   links = defaultLinks,
   logoSrc = "/marketing-page-assets/il-foro-logo.png",
   logoAlt = "Il Foro",
-  newsletterHref = "/newsletter", // Updated to a standard route format
+  newsletterHref = "/newsletter",
   newsletterLabel = "Newsletter",
 }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -67,7 +67,7 @@ export default function Navbar({
       {/* ── Main row ── */}
       <div className="flex justify-center items-center gap-30 relative w-full h-full">
         {/* Left Links (Desktop) */}
-        <div className="hidden items-center gap-[100px] lg:flex">
+        <div className="hidden items-center gap-25 lg:flex">
           {leftLinks.map((link) => (
             <Link
               key={link.href}
@@ -92,12 +92,12 @@ export default function Navbar({
             width={213}
             height={213}
             priority
-            className="h-50 w-auto object-contain lg:h-[213px]"
+            className="h-50 w-auto object-contain lg:h-52"
           />
         </Link>
 
         {/* Right Links + Button (Desktop) */}
-        <div className="hidden items-center gap-[100px] lg:flex">
+        <div className="hidden items-center gap-25 lg:flex">
           {rightLinks.map((link) => (
             <Link
               key={link.href}
@@ -112,30 +112,24 @@ export default function Navbar({
           <Link
             href={newsletterHref}
             style={groteskStyle}
-            className="flex items-center gap-[6px] rounded-[16px] border border-black bg-(--color-brand-accent) px-8 py-[16px] text-[22px] font-medium text-(--color-cream) transition-all duration-200 hover:bg-[#6d3d3d] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-cream)"
+            className="flex items-center gap-1.5 rounded-2xl border border-black bg-(--color-brand-accent) px-8 py-4 text-2xl font-medium text-(--color-cream) transition-all duration-200 hover:bg-[#6d3d3d] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-cream)"
             aria-label="Subscribe to Il Foro newsletter"
           >
             <span>{newsletterLabel}</span>
             <NewsletterIcon
               width={22}
               height={22}
-              style={{
-                color: "var(--color-cream)",
-                stroke: "var(--color-cream)",
-                fill: "none",
-              }}
+              className="text-(--color-cream)"
               aria-hidden="true"
             />
           </Link>
         </div>
 
-        {/* Mobile hamburger (Stays on the right via justify-between when lg:justify-center is turned off on small screens) */}
+        {/* Mobile hamburger */}
         <button
-          className="flex flex-col gap-[5px] p-2 lg:hidden"
+          className="flex flex-col gap-1 p-2 lg:hidden"
           onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label={
-            menuOpen ? "Close navigation menu" : "Open navigation menu"
-          }
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
         >
@@ -171,7 +165,7 @@ export default function Navbar({
               key={link.href}
               href={link.href}
               style={groteskStyle}
-              className="text-[22px] font-medium text-black transition-opacity duration-200 hover:opacity-60"
+              className="text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
@@ -181,7 +175,7 @@ export default function Navbar({
           <Link
             href={newsletterHref}
             style={groteskStyle}
-            className="mt-1 flex w-fit items-center gap-[6px] rounded-[16px] border border-black bg-(--color-brand-accent) px-8 py-[14px] text-[22px] font-medium text-(--color-cream) transition-all duration-200 hover:bg-[#6d3d3d]"
+            className="mt-1 flex w-fit items-center gap-1.5 rounded-2xl border border-black bg-(--color-brand-accent) px-8 py-3.5 text-2xl font-medium text-(--color-cream) transition-all duration-200 hover:bg-[#6d3d3d]"
             aria-label="Subscribe to Il Foro newsletter"
             onClick={() => setMenuOpen(false)}
           >
@@ -189,11 +183,7 @@ export default function Navbar({
             <NewsletterIcon
               width={22}
               height={22}
-              style={{
-                color: "var(--color-cream)",
-                stroke: "var(--color-cream)",
-                fill: "none",
-              }}
+              className="text-(--color-cream)"
               aria-hidden="true"
             />
           </Link>
