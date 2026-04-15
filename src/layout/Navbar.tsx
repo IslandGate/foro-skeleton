@@ -26,9 +26,12 @@ const defaultLinks: NavLink[] = [
   { label: "Winners", href: "/winners-showcase" },
 ];
 
-const groteskStyle: React.CSSProperties = {
-  fontFamily:
-    "var(--font-space-grotesk, 'Space Grotesk', system-ui, sans-serif)",
+const scrollToTop = (e: React.MouseEvent) => {
+  e.preventDefault(); // Stop the '#' from appearing in the URL
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 };
 
 function NewsletterIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -72,8 +75,7 @@ export default function Navbar({
             <Link
               key={link.href}
               href={link.href}
-              style={groteskStyle}
-              className="text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              className="font-space-grotesk text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               {link.label}
             </Link>
@@ -82,7 +84,7 @@ export default function Navbar({
 
         {/* Center Logo */}
         <Link
-          href="/"
+          href="#"
           aria-label="Il Foro – go to homepage"
           className="flex shrink-0 items-center transition-opacity duration-200 hover:opacity-80"
         >
@@ -102,8 +104,7 @@ export default function Navbar({
             <Link
               key={link.href}
               href={link.href}
-              style={groteskStyle}
-              className="text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              className="font-space-grotesk text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               {link.label}
             </Link>
@@ -111,15 +112,14 @@ export default function Navbar({
 
           <Link
             href={newsletterHref}
-            style={groteskStyle}
-            className="flex items-center gap-1.5 rounded-2xl border border-black bg-(--color-brand-accent) px-8 py-4 text-2xl font-medium text-(--color-cream) transition-all duration-200 hover:bg-[#6d3d3d] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--color-cream)"
+            className="font-space-grotesk flex items-center gap-1.5 rounded-2xl border border-black bg-(--color-brand-accent) px-8 py-4 text-2xl font-medium text-cream transition-all duration-200 hover:bg-[#6d3d3d] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
             aria-label="Subscribe to Il Foro newsletter"
           >
             <span>{newsletterLabel}</span>
             <NewsletterIcon
               width={22}
               height={22}
-              className="text-(--color-cream)"
+              className="text-cream"
               aria-hidden="true"
             />
           </Link>
@@ -164,8 +164,7 @@ export default function Navbar({
             <Link
               key={link.href}
               href={link.href}
-              style={groteskStyle}
-              className="text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60"
+              className="font-space-grotesk text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
@@ -174,8 +173,7 @@ export default function Navbar({
 
           <Link
             href={newsletterHref}
-            style={groteskStyle}
-            className="mt-1 flex w-fit items-center gap-1.5 rounded-2xl border border-black bg-(--color-brand-accent) px-8 py-3.5 text-2xl font-medium text-(--color-cream) transition-all duration-200 hover:bg-[#6d3d3d]"
+            className="font-space-grotesk mt-1 flex w-fit items-center gap-1.5 rounded-2xl border border-black bg-(--color-brand-accent) px-8 py-3.5 text-2xl font-medium text-cream transition-all duration-200 hover:bg-[#6d3d3d]"
             aria-label="Subscribe to Il Foro newsletter"
             onClick={() => setMenuOpen(false)}
           >
@@ -183,7 +181,7 @@ export default function Navbar({
             <NewsletterIcon
               width={22}
               height={22}
-              className="text-(--color-cream)"
+              className="text-cream"
               aria-hidden="true"
             />
           </Link>

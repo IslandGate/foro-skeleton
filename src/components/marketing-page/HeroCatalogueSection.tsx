@@ -1,10 +1,6 @@
 import React from "react";
 import Image from "next/image";
 
-const garamondStyle: React.CSSProperties = {
-  fontFamily: "var(--font-eb-garamond, 'EB Garamond', Georgia, serif)",
-};
-
 export default function HeroCatalogueSection() {
   return (
     <section
@@ -13,11 +9,10 @@ export default function HeroCatalogueSection() {
     >
       {/* Heading */}
       <h2
-        className="font-medium text-black text-center text-[clamp(2rem,5.35vw,4.82rem)] leading-[0.94] px-[clamp(24px,3vw,48px)] pt-[clamp(32px,3.47vw,50px)] mb-[clamp(24px,2.5vw,36px)]"
-        style={garamondStyle}
+        className="font-garamond font-medium text-black text-center text-[clamp(2rem,5.35vw,4.82rem)] leading-[0.94] px-[clamp(24px,3vw,48px)] pt-[clamp(32px,3.47vw,50px)] mb-[clamp(24px,2.5vw,36px)]"
       >
         {/* "Il Foro" — italic, brand accent colour */}
-        <em className="text-[var(--color-cream,#f0ead8)] italic">
+        <em className="text-cream italic">
           Il Foro
         </em>
         {

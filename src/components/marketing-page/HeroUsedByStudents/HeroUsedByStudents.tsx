@@ -1,10 +1,6 @@
 import React from "react";
 import InfiniteCarousel from "./InfiniteCarousell";
 
-const garamondStyle: React.CSSProperties = {
-  fontFamily: "var(--font-eb-garamond, 'EB Garamond', Georgia, serif)",
-};
-
 export default function HeroUsedByStudents() {
   return (
     <section
@@ -17,11 +13,10 @@ export default function HeroUsedByStudents() {
       >
         {/* Heading: "Used By Students At" */}
         <h2
-          className="font-medium text-black text-[clamp(36px,5.35vw,77px)] leading-[0.94]"
-          style={garamondStyle}
+          className="font-garamond font-medium text-black text-[clamp(36px,5.35vw,77px)] leading-1 pb-4"
         >
           <span>Used By </span>
-          <em className="text-[var(--color-cream,#f0ead8)] not-italic md:italic">
+          <em className="text-cream italic">
             Students
           </em>
           <span> At</span>

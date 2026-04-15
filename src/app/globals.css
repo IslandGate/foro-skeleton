@@ -21,6 +21,8 @@
   --color-mauve: #834a4a;
   --color-cream: #f0ead8;
   --color-dark-gray: #374151;
+
+  --animate-infinite-scroll: infinite-scroll 10s linear infinite;
 }
 
 @keyframes infinite-scroll {
