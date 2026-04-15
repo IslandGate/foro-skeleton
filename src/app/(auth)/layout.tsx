@@ -1,4 +1,7 @@
-import "@/app/globals.css";
+import type { Metadata } from "next";
+import "@/src/app/globals.css";
+import Image from "next/image";
+import { spaceGrotesk } from "@/src/app/ui/fonts";
 
 export default function Layout({
   children,

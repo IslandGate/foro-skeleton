@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { UNIVERSITY_LOGOS } from "@/constants/UniversityLogos";
+import { UNIVERSITY_LOGOS } from "@/src/constants/UniversityLogos";
 
 const logos = UNIVERSITY_LOGOS.map((logo) => (
   <div

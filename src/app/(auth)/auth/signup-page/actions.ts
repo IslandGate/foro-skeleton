@@ -1,7 +1,7 @@
 'use server';
 
 import { createClient as createAdminClient } from '@supabase/supabase-js';
-import { createClient } from '@/utils/supabase/server';
+import { createClient } from '@/src/utils/supabase/server';
 import type { SignupFormData } from './types';
 
 function profilePayload(userId: string, formData: SignupFormData) {

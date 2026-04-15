@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ebGaramond } from "@/app/ui/fonts";
+import { ebGaramond } from "@/src/app/ui/fonts";
 import { type SignupFormData, INITIAL_FORM_DATA } from "./types";
 import StepCreateAccount from "./steps/StepCreateAccount";
 import StepAboutYou from "./steps/StepAboutYou";
@@ -13,7 +13,7 @@ import StepCompetitionPrefs from "./steps/StepCompetitionPrefs";
 import StepExperience from "./steps/StepExperience";
 import StepMotivation from "./steps/StepMotivation";
 import StepFinal from "./steps/StepFinal";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/src/utils/supabase/client";
 import { signUpUser, saveOAuthProfile } from "./actions";
 
 const TOTAL_STEPS = 7;
