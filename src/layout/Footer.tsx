@@ -4,15 +4,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const garamondStyle: React.CSSProperties = {
-  fontFamily: "var(--font-eb-garamond, 'EB Garamond', Georgia, serif)",
-};
-
-const groteskStyle: React.CSSProperties = {
-  fontFamily:
-    "var(--font-space-grotesk, 'Space Grotesk', system-ui, sans-serif)",
-};
-
 const LEGAL_LINKS = [
   { label: "Terms of Service", href: "/terms" },
   { label: "Privacy", href: "/privacy" },
@@ -42,16 +33,14 @@ export default function Footer() {
           </Link>
 
           <p
-            className="max-w-lg text-xl font-medium leading-relaxed text-black/50"
-            style={groteskStyle}
+            className="font-space-grotesk max-w-lg text-xl font-medium leading-relaxed text-black/50"
           >
             A centralised solution to finding competitions in fields of your
             interest and like-minded teammates.
           </p>
 
           <p
-            className="max-w-md text-xl font-medium text-black/50"
-            style={groteskStyle}
+            className="font-space-grotesk max-w-md text-xl font-medium text-black/50"
           >
             &copy; {currentYear} ilforo LLC. All rights reserved.
           </p>
@@ -105,8 +94,7 @@ export default function Footer() {
         {/* Right Column – Legal */}
         <div className="flex flex-col gap-3 mt-16">
           <h3
-            className="text-4xl font-semibold text-black"
-            style={garamondStyle}
+            className="font-garamond text-4xl font-semibold text-black"
           >
             Legal
           </h3>
@@ -116,8 +104,7 @@ export default function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="flex items-center gap-1 py-2.5 text-xl font-medium text-black/50 transition-colors hover:text-black"
-                  style={groteskStyle}
+                  className="font-space-grotesk flex items-center gap-1 py-2.5 text-xl font-medium text-black/50 transition-colors hover:text-black"
                 >
                   <span className="text-sm">▶</span>
                   {link.label}

@@ -24,7 +24,7 @@ export default function TestingPageLayout({
 }) {
   return (
     <div
-      className={`${ebGaramond.variable} ${spaceGrotesk.variable} min-h-screen antialiased`}
+      className={`${ebGaramond.variable} ${spaceGrotesk.variable} min-h-screen antialiased overflow-x-hidden`}
     >
       <Navbar />
       {children}
