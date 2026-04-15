@@ -1,5 +1,5 @@
 import React from "react";
-import InfiniteCarousel from "./InfiniteCarousell";
+import InfiniteCarousel from "./InfiniteCarousel";
 
 export default function HeroUsedByStudents() {
   return (

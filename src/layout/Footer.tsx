@@ -24,7 +24,7 @@ export default function Footer() {
             className="transition-opacity hover:opacity-80"
           >
             <Image
-              src="/marketing-page-assets/il-foro-logo-no-padding.png"
+              src="/marketing-page-assets/il-foro-logo.png"
               alt="Il Foro Logo"
               width={400}
               height={200}
