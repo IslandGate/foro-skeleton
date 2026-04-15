@@ -18,10 +18,10 @@ export default function Footer() {
       <div className="mx-auto flex max-w-screen-2xl flex-col justify-start gap-24 px-8 py-10 md:flex-row">
         {/* Left Column */}
         <div className="flex flex-col items-start gap-4">
-          <Link
-            href="#"
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             aria-label="Scroll to top"
-            className="transition-opacity hover:opacity-80"
+            className="transition-opacity hover:opacity-80 appearance-none bg-transparent border-none cursor-pointer p-0"
           >
             <Image
               src="/marketing-page-assets/il-foro-logo.png"
@@ -30,7 +30,7 @@ export default function Footer() {
               height={200}
               className="h-auto w-auto object-contain object-left p-8"
             />
-          </Link>
+          </button>
 
           <p
             className="font-space-grotesk max-w-lg text-xl font-medium leading-relaxed text-black/50"
