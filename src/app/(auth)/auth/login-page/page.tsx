@@ -4,8 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { createClient } from '@/src/utils/supabase/client';
-import { ebGaramond, spaceGrotesk } from '@/src/app/ui/fonts';
+import { createClient } from '@/utils/supabase/client';
+import { ebGaramond, spaceGrotesk } from '@/app/ui/fonts';
 import { Suspense } from 'react';
 
 function LoginForm() {
