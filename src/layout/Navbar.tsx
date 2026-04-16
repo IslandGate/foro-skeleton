@@ -1,5 +1,3 @@
-// Proper links need to be filled
-
 "use client";
 
 import React, { useState } from "react";
@@ -19,20 +17,11 @@ export interface NavbarProps {
   newsletterLabel?: string;
 }
 
-// Hrefs need to match!
 const defaultLinks: NavLink[] = [
   { label: "About", href: "/about" },
   { label: "For Hosts", href: "/for-hosts" },
   { label: "Winners", href: "/winners-showcase" },
 ];
-
-const scrollToTop = (e: React.MouseEvent) => {
-  e.preventDefault(); // Stop the '#' from appearing in the URL
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
 
 function NewsletterIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -66,16 +55,17 @@ export default function Navbar({
   const rightLinks = links.slice(2);
 
   return (
-    <nav className="relative w-full bg-white m-10" aria-label="Main navigation">
-      {/* ── Main row ── */}
-      <div className="flex justify-center items-center gap-32 relative w-full h-full">
+    <nav className="w-full bg-white px-6 py-4 lg:px-12" aria-label="Main navigation">
+      {/* Container to keep navbar content centered and constrained */}
+      <div className="mx-auto max-w-7xl flex justify-between items-center relative gap-10">
+        
         {/* Left Links (Desktop) */}
-        <div className="hidden items-center gap-25 lg:flex">
+        <div className="hidden items-center gap-8 lg:flex flex-1 justify-end">
           {leftLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-space-grotesk text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              className="font-space-grotesk text-base font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               {link.label}
             </Link>
@@ -83,28 +73,30 @@ export default function Navbar({
         </div>
 
         {/* Center Logo */}
-        <Link
-          href="#"
-          aria-label="Il Foro – go to homepage"
-          className="flex shrink-0 items-center transition-opacity duration-200 hover:opacity-80"
-        >
-          <Image
-            src={logoSrc}
-            alt={logoAlt}
-            width={213}
-            height={213}
-            priority
-            className="h-auto w-24 sm:w-32 lg:w-48 object-contain"
-          />
-        </Link>
+        <div className="flex shrink-0 items-center px-8 lg:px-12">
+          <Link
+            href="/"
+            aria-label="Il Foro – go to homepage"
+            className="transition-opacity duration-200 hover:opacity-80"
+          >
+            <Image
+              src={logoSrc}
+              alt={logoAlt}
+              width={160}
+              height={160}
+              priority
+              className="h-auto w-20 sm:w-24 lg:w-32 object-contain"
+            />
+          </Link>
+        </div>
 
         {/* Right Links + Button (Desktop) */}
-        <div className="hidden items-center gap-25 lg:flex">
+        <div className="hidden items-center gap-8 lg:flex flex-1 justify-start">
           {rightLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-space-grotesk text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              className="font-space-grotesk text-base font-medium text-black transition-opacity duration-200 hover:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               {link.label}
             </Link>
@@ -112,13 +104,13 @@ export default function Navbar({
 
           <Link
             href={newsletterHref}
-            className="font-space-grotesk flex items-center gap-1.5 rounded-2xl border border-black bg-(--color-brand-accent) px-8 py-4 text-2xl font-medium text-cream transition-all duration-200 hover:bg-[#6d3d3d] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
+            className="font-space-grotesk flex items-center gap-2 rounded-xl border border-black bg-mauve px-5 py-2 text-base font-medium text-cream transition-all duration-200 hover:bg-[#6d3d3d] hover:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cream"
             aria-label="Subscribe to Il Foro newsletter"
           >
             <span>{newsletterLabel}</span>
             <NewsletterIcon
-              width={22}
-              height={22}
+              width={18}
+              height={18}
               className="text-cream"
               aria-hidden="true"
             />
@@ -127,44 +119,32 @@ export default function Navbar({
 
         {/* Mobile hamburger */}
         <button
-          className="flex flex-col gap-1 p-2 lg:hidden"
+          className="flex flex-col gap-1 p-2 lg:hidden absolute right-0"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
         >
-          <span
-            className={`block h-[2px] w-6 origin-center bg-black transition-all duration-300 ${
-              menuOpen ? "translate-y-[7px] rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`block h-[2px] w-6 bg-black transition-all duration-300 ${
-              menuOpen ? "scale-x-0 opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block h-[2px] w-6 origin-center bg-black transition-all duration-300 ${
-              menuOpen ? "-translate-y-[7px] -rotate-45" : ""
-            }`}
-          />
+          <span className={`block h-[2px] w-6 origin-center bg-black transition-all duration-300 ${menuOpen ? "translate-y-[6px] rotate-45" : ""}`} />
+          <span className={`block h-[2px] w-6 bg-black transition-all duration-300 ${menuOpen ? "scale-x-0 opacity-0" : ""}`} />
+          <span className={`block h-[2px] w-6 origin-center bg-black transition-all duration-300 ${menuOpen ? "-translate-y-[6px] -rotate-45" : ""}`} />
         </button>
       </div>
 
-      {/* ── Mobile dropdown menu ── */}
+      {/* mobile dropdown menu after hamburger*/}
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-t border-black/10 bg-white transition-all duration-300 ease-in-out lg:hidden ${
+        className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
           menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
         aria-hidden={!menuOpen}
       >
-        <div className="flex flex-col gap-4 px-6 py-5">
+        <div className="flex flex-col items-start gap-4 py-8 pl-8">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-space-grotesk text-2xl font-medium text-black transition-opacity duration-200 hover:opacity-60"
+              className="font-space-grotesk text-xl font-medium text-black"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
@@ -173,17 +153,11 @@ export default function Navbar({
 
           <Link
             href={newsletterHref}
-            className="font-space-grotesk mt-1 flex w-fit items-center gap-1.5 rounded-2xl border border-black bg-(--color-brand-accent) px-8 py-3.5 text-2xl font-medium text-cream transition-all duration-200 hover:bg-[#6d3d3d]"
-            aria-label="Subscribe to Il Foro newsletter"
+            className="font-space-grotesk mt-2 flex w-fit items-center gap-2 rounded-xl border border-black bg-mauve px-6 py-2.5 text-xl font-medium text-cream transition-all duration-200 hover:bg-[#6d3d3d]"
             onClick={() => setMenuOpen(false)}
           >
             <span>{newsletterLabel}</span>
-            <NewsletterIcon
-              width={22}
-              height={22}
-              className="text-cream"
-              aria-hidden="true"
-            />
+            <NewsletterIcon width={20} height={20} className="text-cream" />
           </Link>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function HeroCatalogueSection() {
         style={garamondStyle}
       >
         {/* "Il Foro" — italic, brand accent colour */}
-        <em className="text-[var(--color-cream,#f0ead8)] italic">
+        <em className="text-cream italic">
           Il Foro
         </em>
         {

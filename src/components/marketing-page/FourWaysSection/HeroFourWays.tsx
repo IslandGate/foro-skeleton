@@ -1,77 +1,85 @@
+"use client";
+
 import React from "react";
+import Image from "next/image";
 
 const ASSETS = {
-  competitionCards:
-    "/marketing-page-assets/FourWays-assets/Easy%20to%20read%20competition%20cards.png",
-  aggregator:
-    "/marketing-page-assets/FourWays-assets/A%20Competition%20aggregator.png",
+  competitionCards: "/marketing-page-assets/FourWays-assets/Easy%20to%20read%20competition%20cards.png",
+  aggregator: "/marketing-page-assets/FourWays-assets/A%20Competition%20aggregator.png",
   searchFilters: "/marketing-page-assets/FourWays-assets/Easy%20win.png",
-  locationMap:
-    "/marketing-page-assets/FourWays-assets/Find%20and%20win%20competitions.png",
+  locationMap: "/marketing-page-assets/FourWays-assets/Find%20and%20win%20competitions.png",
 } as const;
 
-// A subtle shadow to give the cards depth against the background
-const shadowClass =
-  "drop-shadow-[0_12px_36px_rgba(0,0,0,0.12)] transition-transform duration-500 hover:-translate-y-2";
+const cardStyle = "w-full h-auto drop-shadow-md transition-transform duration-500 hover:-translate-y-2 rounded-lg object-contain";
 
 export default function HeroFourWays() {
   return (
     <section
-      className="relative w-full min-h-screen overflow-hidden px-4 py-6 sm:px-8 md:px-12 lg:px-20 bg-[#E4DDCB] bg-[url('/marketing-page-assets/bg-painting-placeholder.jpg')] bg-cover bg-center"
+      className="relative w-full overflow-hidden px-4 py-16 md:px-8 lg:px-12 bg-[#E4DDCB]"
       aria-labelledby="four-ways-heading"
     >
-      {/* Optional overlay to soften the background image if needed */}
-      <div className="absolute inset-0 bg-[#E4DDCB]/20 pointer-events-none" />
+      {/* Background Painting Overlay */}
+      <div 
+        className="absolute inset-0 bg-[url('/marketing-page-assets/bg-painting-placeholder.jpg')] bg-cover bg-center opacity-20 pointer-events-none" 
+        aria-hidden="true"
+      />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] pt-8 md:pt-16">
-        {/* Section Heading */}
+      <div className="relative z-10 mx-auto max-w-screen-2xl">
+        {/* Section Heading - Matches HeroWelcome scaling */}
         <h2
           id="four-ways-heading"
-          className="mb-12 text-left text-[clamp(2.5rem,5vw,4.8rem)] font-medium leading-[1.05] text-black md:mb-20 font-garamond"
+          className="font-garamond mb-12 text-left text-4xl font-medium leading-[1.1] text-black md:mb-20 md:text-6xl lg:text-7xl"
         >
           Four ways <span className="italic text-mauve">Il Foro</span> makes it
           easier to find
-          <br /> <span className="text-mauve">academic competitions</span>
+          <br /> 
+          <span className="text-mauve italic lg:not-italic">academic competitions</span>
         </h2>
 
         {/* 2-Column Staggered Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 lg:gap-24 items-start pb-20">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:gap-20">
+          
           {/* Left Column */}
-          <div className="flex flex-col gap-10 md:gap-16 lg:gap-24 w-full">
-            <div className="w-full relative">
-              <img
+          <div className="flex flex-col gap-8 md:gap-16 lg:gap-24">
+            <div className="relative w-full">
+              <Image
                 src={ASSETS.competitionCards}
                 alt="Easy to read competition cards"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className={`w-full h-auto ${shadowClass}`}
+                width={700}
+                height={500}
+                className={cardStyle}
+                priority
               />
             </div>
-            <div className="w-full relative">
-              <img
+            <div className="relative w-full">
+              <Image
                 src={ASSETS.searchFilters}
                 alt="Narrow it down. Win it now."
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className={`w-full h-auto ${shadowClass}`}
+                width={700}
+                height={500}
+                className={cardStyle}
               />
             </div>
           </div>
 
-          {/* Right Column (Staggered Downward) */}
-          <div className="flex flex-col gap-10 md:gap-16 lg:gap-20 w-full md:pt-[15%]">
-            <div className="w-full relative">
-              <img
+          {/* Right Column (Offset downward slightly on desktop) */}
+          <div className="flex flex-col gap-8 md:mt-24 md:gap-16 lg:gap-24">
+            <div className="relative w-full">
+              <Image
                 src={ASSETS.aggregator}
-                alt="A competition aggregator that is personalised."
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className={`w-full h-auto ${shadowClass}`}
+                alt="Personalised competition aggregator"
+                width={700}
+                height={500}
+                className={cardStyle}
               />
             </div>
-            <div className="w-full relative">
-              <img
+            <div className="relative w-full">
+              <Image
                 src={ASSETS.locationMap}
-                alt="Find and win competitions in your backyard."
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className={`w-full h-auto ${shadowClass}`}
+                alt="Find competitions in your backyard"
+                width={700}
+                height={500}
+                className={cardStyle}
               />
             </div>
           </div>
