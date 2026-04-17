@@ -51,13 +51,13 @@ export default function Navbar({
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      <div 
+      <div
         className={`absolute left-0 top-0 w-full -z-10 bg-white/70 backdrop-blur-md transition-[height] duration-250 ease-out ${
-          menuOpen ? "h-[340px]" : "h-full"
+          menuOpen ? "h-[360px] lg:h-full" : "h-full"
         }`}
       />
 
-      <nav className="relative z-10 w-full px-6 py-4 lg:px-12">
+      <nav className="relative z-10 w-full px-6 py-10 lg:px-12">
         <div className="mx-auto max-w-7xl flex justify-between items-center gap-4 lg:gap-10">
           <div className="hidden items-center gap-8 lg:flex flex-1 justify-end">
             {leftLinks.map((link) => (
@@ -118,9 +118,15 @@ export default function Navbar({
             className="flex flex-col gap-1.5 p-2 lg:hidden absolute right-6"
             onClick={() => setMenuOpen((prev) => !prev)}
           >
-            <span className={`block h-0.5 w-6 bg-black transition-all ${menuOpen ? "translate-y-2 rotate-45" : ""}`} />
-            <span className={`block h-0.5 w-6 bg-black transition-all ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-0.5 w-6 bg-black transition-all ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+            <span
+              className={`block h-0.5 w-6 bg-black transition-all ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-black transition-all ${menuOpen ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-black transition-all ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+            />
           </button>
         </div>
       </nav>
@@ -128,12 +134,12 @@ export default function Navbar({
       <div
         id="mobile-menu"
         className={`absolute left-0 top-full w-full transition-all duration-250 ease-out lg:hidden ${
-          menuOpen 
-            ? "max-h-[500px] opacity-100 translate-y-0" 
+          menuOpen
+            ? "max-h-[500px] opacity-100 translate-y-0"
             : "max-h-0 opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col items-start gap-4 pl-8 pr-8">
+        <div className="flex flex-col items-start gap-4 pl-8 pr-8 pb-6">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -147,7 +153,7 @@ export default function Navbar({
 
           <Link
             href={newsletterHref}
-            className="font-space-grotesk mt-2 flex w-fit items-center gap-2 rounded-xl border border-black bg-mauve px-6 py-2.5 text-xl font-medium text-cream transition-all duration-200 hover:bg-[#6d3d3d]"
+            className="font-space-grotesk mt-2 flex w-fit items-center gap-2 rounded-xl border border-black bg-mauve px-6 py-3 text-xl font-medium text-cream transition-all duration-200 hover:bg-[#6d3d3d]"
             onClick={() => setMenuOpen(false)}
           >
             <span>{newsletterLabel}</span>
