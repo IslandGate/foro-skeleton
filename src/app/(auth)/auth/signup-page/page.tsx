@@ -344,7 +344,7 @@ function SignupContent() {
                     type="submit"
                     className="flex h-[67px] items-center justify-center gap-[10px] rounded-lg border border-dark-gray px-6 text-xl font-medium text-dark-gray transition-all hover:bg-dark-gray/5"
                   >
-                    <span>Create Account</span>
+                    <span className="font-space-grotesk">Create Account</span>
                     <ArrowRight />
                   </button>
 
@@ -360,14 +360,16 @@ function SignupContent() {
                       height={38}
                       className="inline-block"
                     />
-                    <span>Sign Up With Google</span>
+                    <span className="font-space-grotesk">
+                      Sign Up With Google
+                    </span>
                   </button>
                 </div>
 
                 <div className="mt-[45px] pb-10 text-center">
                   <Link
                     href="/login"
-                    className="text-xl font-medium text-dark-gray hover:underline"
+                    className="text-xl font-medium text-dark-gray hover:underline font-space-grotesk"
                   >
                     Already Have An Account?
                   </Link>
@@ -381,7 +383,7 @@ function SignupContent() {
                   className="flex h-[67px] items-center justify-center gap-[10px] rounded-lg border border-dark-gray px-6 text-xl font-medium text-dark-gray transition-all hover:bg-dark-gray/5"
                 >
                   <ArrowRight className="rotate-180" />
-                  <span>Back</span>
+                  <span className="font-space-grotesk">Back</span>
                 </button>
 
                 <button
