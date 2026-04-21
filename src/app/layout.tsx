@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { ebGaramond, spaceGrotesk, inter } from "@/app/ui/fonts";
-import Navbar from "@/layout/Navbar";
-import Footer from "@/layout/Footer";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
@@ -16,12 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${ebGaramond.className} ${spaceGrotesk.variable} ${inter.variable} antialiased`}
-      >
-        <Navbar />
+      <body className={`${ebGaramond.className} ${spaceGrotesk.variable} ${inter.variable} antialiased`}>
         {children}
-        <Footer />
       </body>
     </html>
   );
