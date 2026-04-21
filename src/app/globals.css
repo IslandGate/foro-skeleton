@@ -1,22 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
-
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
-  --foreground: #ffffff;
+  --foreground: #171717; /* Changed from white-on-white for visibility */
 }
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
+  /* Map the CSS variables from fonts.ts to Tailwind names */
   --font-garamond: 'EB Garamond', serif;
-  --font-space-grotesk: 'Space Grotesk', sans-serif;
-  --font-inter: 'Inter', sans-serif;
-
+  --font-space-grotesk: var(--font-space-grotesk);
+  --font-inter: var(--font-inter);
 
   --color-brand-accent: #834a4a;
   --color-olive: #4b4b30;
@@ -28,32 +24,17 @@
 }
 
 @keyframes infinite-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 @utility scrollbar-hidden {
   -ms-overflow-style: none;
   scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #ededed;
-  }
+  &::-webkit-scrollbar { display: none; }
 }
 
 body {
-  background: #ffffff;
+  background: var(--background);
   color: var(--foreground);
 }

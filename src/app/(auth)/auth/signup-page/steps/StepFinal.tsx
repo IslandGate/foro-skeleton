@@ -16,7 +16,7 @@ export default function StepFinal({ formData, updateFormData }: StepProps) {
           onChange={(e) =>
             updateFormData({ additionalInterests: e.target.value })
           }
-          placeholder="Any competition categories or interests you'd like to see on il foro..."
+          placeholder="Any competition categories or interests you'd like to see on Il Foro..."
           rows={4}
           className="w-full resize-none bg-transparent text-base text-dark-gray placeholder:text-dark-gray/40 focus:outline-none"
         />

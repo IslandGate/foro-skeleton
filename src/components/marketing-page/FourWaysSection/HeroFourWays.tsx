@@ -15,7 +15,7 @@ const cardStyle = "w-full h-auto drop-shadow-md transition-transform duration-50
 export default function HeroFourWays() {
   return (
     <section
-      className="relative w-full overflow-hidden px-4 py-16 md:px-8 lg:px-12 bg-[#E4DDCB]"
+      className="relative w-full overflow-hidden px-4 py-16 md:px-8 lg:px-12 "
       aria-labelledby="four-ways-heading"
     >
       {/* Background Painting Overlay */}
