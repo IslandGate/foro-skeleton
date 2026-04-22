@@ -1,13 +1,12 @@
-import { spaceGrotesk } from "@/app/ui/fonts";
+import { ebGaramond, spaceGrotesk, inter } from "@/app/ui/fonts";
+import "@/app/globals.css";
 
-export default function SignupLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${spaceGrotesk.className} min-h-screen`}>
-      {children}
-    </div>
+    <html lang="en">
+      <body className={`${ebGaramond.className} ${spaceGrotesk.variable} ${inter.variable} antialiased`}>
+        {children} 
+      </body>
+    </html>
   );
 }
