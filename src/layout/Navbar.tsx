@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 export interface NavLink {
   label: string;
   href: string;
@@ -15,10 +15,11 @@ export interface NavbarProps {
   logoAlt?: string;
   newsletterHref?: string;
   newsletterLabel?: string;
+  onLinkClick?: (href: string) => void; 
 }
 
 const defaultLinks: NavLink[] = [
-  { label: "About", href: "/about" },
+  { label: "About", href: "/#about" },
   { label: "For Hosts", href: "/for-hosts" },
   { label: "Winners", href: "/winners-showcase" },
 ];
@@ -43,8 +44,25 @@ export default function Navbar({
   logoAlt = "Il Foro",
   newsletterHref = "/newsletter",
   newsletterLabel = "Newsletter",
+  onLinkClick,
 }: NavbarProps) {
+  
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleNavClick =
+    onLinkClick ??
+    ((href: string) => {
+      if (href === "/#about" && window.location.pathname === "/") {
+        const el = document.getElementById("about");
+        el?.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => {
+          router.replace("/", { scroll: false });
+        }, 600);
+      } else {
+        router.push(href);
+      }
+    });
 
   const leftLinks = links.slice(0, 2);
   const rightLinks = links.slice(2);
@@ -64,6 +82,11 @@ export default function Navbar({
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={(e) => {
+                    e.preventDefault(); 
+                    handleNavClick(link.href);
+                  }
+                }
                 className="font-space-grotesk text-base font-medium text-black transition-opacity hover:opacity-60"
               >
                 {link.label}
@@ -144,9 +167,14 @@ export default function Navbar({
             <Link
               key={link.href}
               href={link.href}
+              onClick={(e) => {
+              e.preventDefault();
+              setMenuOpen(false);
+              handleNavClick(link.href);
+              }}
               className="font-space-grotesk text-xl font-medium text-black transition-opacity duration-200 hover:opacity-60"
-              onClick={() => setMenuOpen(false)}
             >
+              
               {link.label}
             </Link>
           ))}
