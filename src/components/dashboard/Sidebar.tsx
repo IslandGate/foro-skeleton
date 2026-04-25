@@ -49,7 +49,7 @@ export default function Sidebar() {
         {/* Toggle expand button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-dark-cream brightness-85 hover:bg-dark-cream hover:brightness-80 transition-all duration-300 ease-in-out rounded-r-md py-6 px-1 flex items-center justify-center cursor-pointer shadow-sm z-10"
+          className="absolute right-0 translate-x-1/2 top-1/2 transform -translate-y-1/2 bg-dark-cream brightness-85 hover:bg-dark-cream hover:brightness-80 transition-all duration-300 ease-in-out rounded-r-md rounded-l-md py-6 px-1 flex items-center justify-center cursor-pointer shadow-sm z-10"
           aria-label="Toggle Sidebar"
         >
           <span className="text-xl font-bold">{isOpen ? "‹" : "›"}</span>
