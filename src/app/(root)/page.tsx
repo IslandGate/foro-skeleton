@@ -5,11 +5,16 @@ import HeroUsedByStudents from "@/components/marketing-page/UsedByStudents/UsedB
 
 export default function Page() {
   return (
-    <main>
+    <main className="bg-[url('/images/hero-catalogue-bg.png')] bg-contain bg-no-repeat">
+      {" "}
       <HeroWelcome />
-      <HeroAboutUs />
-      <HeroFourWays />
-      <HeroUsedByStudents />
+      <div className="bg-white">
+        <div className="mt-[375px]">
+          <HeroAboutUs />
+        </div>
+        <HeroFourWays />
+        <HeroUsedByStudents />
+      </div>
     </main>
   );
 }

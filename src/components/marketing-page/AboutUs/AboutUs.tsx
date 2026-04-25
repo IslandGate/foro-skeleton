@@ -24,7 +24,7 @@ export default function HeroAboutUs({
       id="about"
     >
       <h2 className="font-garamond mb-6 text-5xl font-medium leading-tight text-black md:mb-10 md:text-6xl lg:text-7xl">
-        {titlePrefix} <span className="text-cream italic">{titleEmphasis}</span>
+        {titlePrefix} <span className="text-mauve italic">{titleEmphasis}</span>
       </h2>
 
       {/* Reduced padding (p-4) on mobile to give text more room */}

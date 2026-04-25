@@ -13,12 +13,12 @@ export default function NotFound() {
             className="h-auto w-45 p-2"
           />
           <h1 className="text-center">
-            Sorry page not found 404...we'll get this fixed asap.
+            Sorry page not found 404...we'll will get this fixed asap.
           </h1>
 
           <h2 className="text-center">
             <span className="font-bold underline italic">
-              <Link href="/">Click Here</Link>
+              <Link href="/">Click here</Link>
             </span>{" "}
             to go home
           </h2>
