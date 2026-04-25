@@ -1,5 +1,5 @@
+import { ebGaramond, spaceGrotesk, inter } from "@/app/ui/fonts";
 import "@/app/globals.css";
-import { spaceGrotesk } from "@/app/ui/fonts";
 
 export default function SignupLayout({ children }: { children: React.ReactNode }) {
   return <main>{children}</main>;
@@ -8,8 +8,8 @@ export default function SignupLayout({ children }: { children: React.ReactNode }
 }>) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.className} antialiased`}>
-        {children}
+      <body className={`${ebGaramond.className} ${spaceGrotesk.variable} ${inter.variable} antialiased`}>
+        {children} 
       </body>
     </html>
   );

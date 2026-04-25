@@ -1,6 +1,4 @@
-import "@/app/globals.css";
-
-export default function Layout({
+export default function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

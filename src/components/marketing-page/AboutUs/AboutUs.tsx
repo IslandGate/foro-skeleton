@@ -19,15 +19,16 @@ export default function HeroAboutUs({
   statistics = DEFAULT_STATISTICS,
 }: HeroAboutUsProps) {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-8 md:px-8 lg:px-12">
+    <section
+      className="mx-auto max-w-7xl px-4 py-8 md:px-8 lg:px-12 scroll-mt-[120px]"
+      id="about"
+    >
       <h2 className="font-garamond mb-6 text-5xl font-medium leading-tight text-black md:mb-10 md:text-6xl lg:text-7xl">
-        {titlePrefix}{" "}
-        <span className="text-cream italic">{titleEmphasis}</span>
+        {titlePrefix} <span className="text-cream italic">{titleEmphasis}</span>
       </h2>
 
       {/* Reduced padding (p-4) on mobile to give text more room */}
       <article className="flex flex-col gap-6 overflow-hidden rounded-2xl border border-black bg-cream p-5 md:gap-12 md:p-10 lg:p-14">
-        
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-16">
           <div className="w-36 shrink-0 md:w-56 lg:w-72">
             <Image
@@ -55,7 +56,7 @@ export default function HeroAboutUs({
         </div>
 
         {/* Tightened the divider gap (pt-6) for smaller screens */}
-        <section 
+        <section
           className="grid w-full grid-cols-1 gap-4 pt-6 sm:grid-cols-3 md:gap-8 lg:gap-12"
           aria-label="Key statistics"
         >

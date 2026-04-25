@@ -180,7 +180,7 @@ function LoginForm() {
           <div className="mt-10 pb-10 text-center">
             <Link
               href="/waitlist"
-              className="text-xl font-medium text-dark-gray underline hover:text-black"
+              className="text-xl font-medium text-dark-gray underline hover:text-black font-space-grotesk"
             >
               Don&apos;t Already Have an Account?
             </Link>

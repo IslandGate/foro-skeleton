@@ -128,7 +128,7 @@ function SignupContent() {
 
   if (code) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-olive">
+      <div className="flex min-h-screen items-center justify-center bg-olive font-space-grotesk">
         <div className="text-cream">Completing sign in...</div>
       </div>
     );
@@ -233,7 +233,7 @@ function SignupContent() {
 
   if (submitted) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-olive px-6">
+      <div className="flex min-h-screen items-center justify-center bg-olive px-6 font-space-grotesk">
         <div className="max-w-md rounded-2xl bg-cream px-10 py-12 text-center shadow-lg">
           <Image
             src="/il_foro_logo_signup.png"
@@ -242,7 +242,7 @@ function SignupContent() {
             height={120}
             className="mx-auto mb-6 h-auto w-[100px]"
           />
-          <h2 className={`${ebGaramond.className} mb-3 text-4xl font-medium`}>
+          <h2 className="mb-3 text-4xl font-medium">
             Check your email
           </h2>
           <p className="mb-6 text-base text-dark-gray/70">
@@ -262,7 +262,7 @@ function SignupContent() {
   }
 
   return (
-    <div className="flex min-h-screen bg-olive">
+    <div className="flex min-h-screen bg-olive font-space-grotesk">
       {/* Left Side - Decorative */}
       <div className="relative hidden shrink-0 lg:block lg:w-[25.9%]">
         <div className="absolute inset-0">

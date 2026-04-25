@@ -1,11 +1,13 @@
+"use client";
+
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export interface SideBarItem {
-    label: string; 
-    href: string; 
-    iconSrc: string; 
+    label: string;
+    href: string;
+    iconSrc: string;
 }
 
 const mainLinks: SideBarItem[] = [
@@ -15,68 +17,131 @@ const mainLinks: SideBarItem[] = [
         iconSrc: "/dashboard-assets/sidebar-assets/PopularCompetitionsIcon.svg",
     },
     {
-        label: "Your Saved Competitions", 
+        label: "Your Saved Competitions",
         href: "/your-saved-competitions",
         iconSrc: "/dashboard-assets/sidebar-assets/YourSavedCompetitionsIcon.svg"
     },
-
-]
+];
 
 const bottomLinks: SideBarItem[] = [
-    
     {
-        label: "Settings", 
+        label: "Settings",
         href: "/settings",
         iconSrc: "/dashboard-assets/sidebar-assets/SettingsIcon.svg",
     },
-]
+    {
+        label: "Back",
+        href: "/back",
+        iconSrc: "/dashboard-assets/sidebar-assets/BackIcon.svg",
+    }
+];
 
 export default function Sidebar() {
-     {
-        const [isOpen, setIsOpen] = useState(false)
-        return (
-            <aside>
-                
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <aside
+            className={`relative flex flex-col h-screen bg-dark-cream transition-all duration-300 ${
+                isOpen ? "w-64 px-5" : "w-16 px-3"
+            } py-8 font-sans text-black`}
+        >
             {/* Toggle expand button */}
-            <button>
-              <span> </span>
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="absolute -right-5 top-1/2 transform -translate-y-1/2 bg-dark-cream brightness-85 hover:bg-dark-cream hover:brightness-80 transition-all duration-300 ease-in-out rounded-r-md py-6 px-1 flex items-center justify-center cursor-pointer shadow-sm z-10"
+                aria-label="Toggle Sidebar"
+            >
+                <span className="text-xl font-bold">{isOpen ? "‹" : "›"}</span>
             </button>
 
             {/* Top section logo */}
-            <div>
-                <Link>
+            <div className={`mb-12 flex ${isOpen ? "justify-start pl-1" : "justify-center"} w-full transition-all duration-300`}>
+                <Link href="/">
+                    {isOpen ? (
+                        <Image
+                            src="/marketing-page-assets/il-foro-logo.png"
+                            alt="Il Foro Logo"
+                            width={120}
+                            height={65}
+                            className="object-contain"
+                            priority
+                        />
+                    ) : (
+                        <Image
+                            src="/marketing-page-assets/il-foro-icon.png" 
+                            alt="Il Foro Face Icon"
+                            width={36}
+                            height={36}
+                            className="object-contain"
+                            priority
+                        />
+                    )}
                 </Link>
             </div>
 
             {/* Middle Section */}
-            <nav>
-              {mainLinks.map((link) => (
-                  <Link key={link.label} href={link.href}>
-                      <Image>
-                      </Image>
-                  <span>
-                    {link.label}
-                  </span>
-                </Link>
-              ))}
-                </nav>
-                
-                { /* Bottom section */}
-                <div>
-                    {bottomLinks.map(link) => {
-                        <Link key={link.label} href={link.href}>
-                            <Image>
-                            </Image>
-
-                            <span>
+            <nav className="flex flex-col gap-6 w-full">
+                {mainLinks.map((link) => (
+                    <Link 
+                        key={link.label} 
+                        href={link.href} 
+                        className={`flex items-center hover:opacity-70 transition-all ${
+                            isOpen ? "justify-start" : "justify-center"
+                        }`}
+                    >
+                        <div className="w-6 h-6 relative shrink-0">
+                            <Image 
+                                src={link.iconSrc} 
+                                alt={`${link.label} icon`} 
+                                fill 
+                                className="object-contain" 
+                            />
+                        </div>
+                        
+                        <div className={`flex items-center overflow-hidden transition-all duration-300 ${
+                            isOpen ? "w-48 ml-4 opacity-100" : "w-0 ml-0 opacity-0"
+                        }`}>
+                            <span className="font-medium text-sm tracking-wide whitespace-nowrap">
                                 {link.label}
                             </span>
-                        </Link>
-                }}
+                        </div>
+                    </Link>
+                ))}
+            </nav>
+
+            {/* Bottom section */}
+            <div className="mt-auto flex flex-col gap-6 w-full">
+                <div className="flex justify-center w-full mb-1">
+                    <hr className={`border-black/30 transition-all duration-300 ${isOpen ? "w-full" : "w-8"}`} />
                 </div>
                 
-          </aside>
-        ); 
-
-    }
+                {bottomLinks.map((link) => (
+                    <Link 
+                        key={link.label} 
+                        href={link.href} 
+                        className={`flex items-center hover:opacity-70 transition-all ${
+                            isOpen ? "justify-start" : "justify-center"
+                        }`}
+                    >
+                        <div className="w-6 h-6 relative shrink-0">
+                            <Image 
+                                src={link.iconSrc} 
+                                alt={`${link.label} icon`} 
+                                fill 
+                                className="object-contain" 
+                            />
+                        </div>
+                        
+                        <div className={`flex items-center overflow-hidden transition-all duration-300 ${
+                            isOpen ? "w-48 ml-4 opacity-100" : "w-0 ml-0 opacity-0"
+                        }`}>
+                            <span className="font-medium text-sm tracking-wide whitespace-nowrap">
+                                {link.label}
+                            </span>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+        </aside>
+    );
 }
