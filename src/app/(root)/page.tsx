@@ -11,8 +11,14 @@ export default function Page() {
     <main>
       <Parallax 
         bgImage="/images/hero-catalogue-bg.png" 
-        strength={800} // adjust the strength of the parallax effect
-        bgImageStyle={{ objectFit: "contain", objectPosition: "top" }}
+        strength={800} 
+        bgImageStyle={{ 
+          width: "100%",
+          minWidth: "1500px", // THE FIX: Physically prevents the image from shrinking on mobile
+          height: "auto",     // Keeps the natural desktop height
+          objectFit: "cover", 
+          objectPosition: "top center" 
+        }}
       >
         
         <div className="pt-24">
