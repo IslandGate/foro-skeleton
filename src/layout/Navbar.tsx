@@ -71,11 +71,11 @@ export default function Navbar({
     <header className="sticky top-0 z-50 w-full">
       <div
         className={`absolute left-0 top-0 w-full -z-10 bg-white/70 backdrop-blur-md transition-[height] duration-250 ease-out ${
-          menuOpen ? "h-[360px] lg:h-full" : "h-full"
+          menuOpen ? "h-[335px] lg:h-full" : "h-full"
         }`}
       />
 
-      <nav className="relative z-10 w-full px-6 py-10 lg:px-12">
+      <nav className="relative z-10 w-full px-6 py-8 lg:px-12">
         <div className="mx-auto max-w-7xl flex justify-between items-center gap-4 lg:gap-10">
           <div className="hidden items-center gap-8 lg:flex flex-1 justify-end">
             {leftLinks.map((link) => (
@@ -162,7 +162,7 @@ export default function Navbar({
             : "max-h-0 opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col items-start gap-4 pl-8 pr-8 pb-6">
+        <div className="flex flex-col items-start gap-4 pl-8 pr-8">
           {links.map((link) => (
             <Link
               key={link.href}
