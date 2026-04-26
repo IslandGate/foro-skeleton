@@ -16,7 +16,7 @@ export default function Page() {
         </div>
 
         <div className="relative z-20">
-          <div className="mt-[400px]">
+          <div className="mt-[450px]">
             <HeroAboutUs />
           </div>
           <HeroFourWays />
