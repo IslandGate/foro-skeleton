@@ -101,23 +101,23 @@ export default function NotFound() {
 
       <div className="w-full md:w-[60%] h-[50vh] md:h-screen pointer-events-none"></div>
 
-      <div className="w-full md:w-[40%] h-[50vh] md:h-screen flex flex-col justify-center items-start px-8 md:pr-24 z-10 pointer-events-auto">
+      <div className="w-full md:w-[40%] h-[50vh] md:h-screen flex flex-col justify-center items-start px-8 md:pr-24 z-10 pointer-events-auto ">
         <img
-          src="/marketing-page-assets/il-foro-logo.png"
+          src="/marketing-page-assets/il-foro-logo-wip.png"
           alt="Il Foro Logo"
           className="w-48 mb-8 object-contain pointer-events-none"
           draggable="false"
         />
         
         <h1 className="text-black text-4xl font-garamond md:text-5xl mb-10 font-medium tracking-tight">
-          well, this is awkward...
+          Well, this is awkward...
         </h1>
         
         <button
-          className="px-8 py-4 rounded-2xl font-medium font-space-grotesk bg-mauve text-white text-xl transition-all duration-200 hover:brightness-90 hover:shadow-md shadow-sm"
+          className="px-8 py-4 rounded-2xl font-medium font-space-grotesk bg-mauve text-white text-xl transition-all duration-200 hover:brightness-90 hover:shadow-md shadow-sm border-1 border-black"
           onClick={() => window.history.back()}
         >
-          take me back...
+          Take me back...
         </button>
       </div>
     </div>
