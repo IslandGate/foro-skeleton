@@ -114,7 +114,7 @@ export default function NotFound() {
         </h1>
         
         <button
-          className="px-8 py-4 rounded-2xl font-medium font-space-grotesk bg-mauve text-white text-xl transition-all duration-200 hover:brightness-90 hover:shadow-md shadow-sm border-1 border-black"
+          className="px-8 py-4 rounded-2xl font-medium font-space-grotesk bg-mauve text-white text-xl transition-all duration-200 hover:brightness-90 hover:shadow-md transition-transform duration-300 ease-in-out hover:scale-105 shadow-sm border-1 border-black "
           onClick={() => window.history.back()}
         >
           Take me back...

@@ -32,7 +32,6 @@ export default function HeroWelcome({
       aria-label="Il Foro hero"
     >
       <div className="flex w-full max-w-4xl flex-col items-center gap-10">
-        
         {/* Title */}
         <h1 className="w-full text-7xl lg:text-8xl font-medium leading-[1.1] font-garamond">
           <span className="block text-black">{titleFirstLine}</span>
@@ -50,7 +49,7 @@ export default function HeroWelcome({
         <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href={signUpHref}
-            className={`${buttonClass} bg-olive text-cream gap-3 group`}
+            className={`${buttonClass} bg-olive text-cream gap-3 group transition-transform duration-300 ease-in-out hover:scale-102`}
           >
             <span>Sign Up</span>
             <Image
@@ -64,7 +63,7 @@ export default function HeroWelcome({
 
           <Link
             href={logInHref}
-            className={`${buttonClass} bg-mauve text-cream`}
+            className={`${buttonClass} bg-mauve text-cream transition-transform duration-300 ease-in-out hover:scale-102`}
           >
             Log In
           </Link>
@@ -72,8 +71,16 @@ export default function HeroWelcome({
 
         {/* Social Links */}
         <div className="flex items-center gap-6 pt-4">
-          <SocialIcon href={linkedInHref} src="/marketing-page-assets/HeroWelcome-assets/linkedin.svg" alt="LinkedIn" />
-          <SocialIcon href={instagramHref} src="/marketing-page-assets/HeroWelcome-assets/instagram.svg" alt="Instagram" />
+          <SocialIcon
+            href={linkedInHref}
+            src="/marketing-page-assets/HeroWelcome-assets/linkedin.svg"
+            alt="LinkedIn"
+          />
+          <SocialIcon
+            href={instagramHref}
+            src="/marketing-page-assets/HeroWelcome-assets/instagram.svg"
+            alt="Instagram"
+          />
         </div>
       </div>
     </section>

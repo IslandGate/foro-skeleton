@@ -16,7 +16,6 @@ export default function Footer() {
   return (
     <footer className="w-full bg-cream border-t border-black/5">
       <div className="mx-auto max-w-7xl px-6 py-12 md:px-12 md:py-16 flex flex-col justify-start gap-12 md:flex-row">
-        
         {/* Left Column: Branding & Social */}
         <div className="flex flex-col items-start gap-6 max-w-md">
           <button
@@ -29,7 +28,7 @@ export default function Footer() {
               alt="Il Foro Logo"
               width={120}
               height={60}
-              className="h-auto w-32 object-contain"
+              className="h-auto w-32 object-contain transition-transform duration-300 ease-in-out hover:scale-105 hover:brightness-80"
             />
           </button>
 
@@ -39,9 +38,21 @@ export default function Footer() {
           </p>
 
           <div className="flex items-center gap-5">
-            <SocialIcon href="https://www.linkedin.com/company/ilforo" src="/marketing-page-assets/HeroWelcome-assets/linkedin.svg" alt="LinkedIn" />
-            <SocialIcon href="https://www.instagram.com/ilforo.web/" src="/marketing-page-assets/HeroWelcome-assets/instagram.svg" alt="Instagram" />
-            <SocialIcon href="mailto:contactilforo@gmail.com" src="/marketing-page-assets/Footer Assets/mail.svg" alt="Email" />
+            <SocialIcon
+              href="https://www.linkedin.com/company/ilforo"
+              src="/marketing-page-assets/HeroWelcome-assets/linkedin.svg"
+              alt="LinkedIn"
+            />
+            <SocialIcon
+              href="https://www.instagram.com/ilforo.web/"
+              src="/marketing-page-assets/HeroWelcome-assets/instagram.svg"
+              alt="Instagram"
+            />
+            <SocialIcon
+              href="mailto:contactilforo@gmail.com"
+              src="/marketing-page-assets/Footer Assets/mail.svg"
+              alt="Email"
+            />
           </div>
 
           <p className="font-space-grotesk text-sm font-medium text-black/40">
