@@ -1,7 +1,7 @@
 // CompetitionCard.tsx
 import Image from "next/image";
 import SubjectTag, { type SubjectName } from "./SubjectTag";
-
+import { Button } from "@/components/Button";
 // 1. Updated Interfaces
 export interface CompetitionCardData {
   title: string;
@@ -210,18 +210,21 @@ export default function CompetitionCard({ data, rotation = 0 }: CompetitionCardP
 
         {/* Action Buttons */}
         <div className="flex gap-2.5 mt-1">
-          <button
-            className="flex-1 py-2.5 text-[11px] sm:text-xs font-space-grotesk font-bold text-gray-700
-              bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
+          <Button
+            bg="white"
+            size="sm"
+            className="flex-1 hover:bg-gray-50 hover:border-gray-300 shadow-sm"
           >
             More Info
-          </button>
-          <button
-            className="flex-1 py-2.5 text-[11px] sm:text-xs font-space-grotesk font-bold text-black
-              bg-[#6fbc7b] rounded-lg hover:bg-[#66ae71] transition-all shadow-sm"
+          </Button>
+          
+          <Button
+            bg="success"
+            size="sm"
+            className="flex-1 hover:bg-[#66ae71] shadow-sm"
           >
             Register
-          </button>
+          </Button>
         </div>
       </div>
     </article>
