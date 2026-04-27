@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from '@/components/Button';
 
 export interface HeroWelcomeProps {
   titleFirstLine?: string;
@@ -24,8 +25,6 @@ export default function HeroWelcome({
   instagramHref = "https://www.instagram.com/ilforo.web/",
 }: HeroWelcomeProps) {
   
-  const buttonClass = "flex items-center justify-center rounded-2xl border border-black px-8 py-5 text-xl font-medium font-space-grotesk transition-all duration-200 hover:brightness-90 hover:shadow-md w-full sm:w-64";
-
   return (
     <section
       className="flex min-h-[calc(100vh-80px)] w-full flex-col items-center justify-center px-6 py-10 text-center"
@@ -45,11 +44,13 @@ export default function HeroWelcome({
           {subtitle}
         </p>
 
-        {/* CTA Buttons - flex-col ensures they stack and stretch on mobile */}
+        {/* CTA Buttons */}
         <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <Link
+          <Button
             href={signUpHref}
-            className={`${buttonClass} bg-olive text-cream gap-3 group transition-transform duration-300 ease-in-out hover:scale-102`}
+            bg="olive"
+            size="xl"
+            className="gap-3 group hover:scale-102 w-full sm:w-64"
           >
             <span>Sign Up</span>
             <Image
@@ -59,14 +60,16 @@ export default function HeroWelcome({
               height={20}
               className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
             />
-          </Link>
+          </Button>
 
-          <Link
-            href={logInHref}
-            className={`${buttonClass} bg-mauve text-cream transition-transform duration-300 ease-in-out hover:scale-102`}
+          <Button 
+            href={logInHref} 
+            bg="mauve" 
+            size="xl" 
+            className="hover:scale-102 w-full sm:w-64"
           >
             Log In
-          </Link>
+          </Button>
         </div>
 
         {/* Social Links */}

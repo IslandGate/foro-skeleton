@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/Button";
 export interface NavLink {
   label: string;
   href: string;
@@ -127,13 +128,15 @@ export default function Navbar({
               </Link>
             ))}
 
-            <Link
+            <Button
               href={newsletterHref}
-              className="font-space-grotesk flex items-center gap-2 rounded-xl border border-black bg-mauve px-4 py-2 text-sm font-medium text-cream transition-all hover:shadow-sm duration-300 ease-in-out hover:scale-105 hover:brightness-90"
+              bg="mauve"
+              size="md"
+              className="px-4 py-2 text-sm gap-2 hover:scale-105"
             >
               <span>{newsletterLabel}</span>
               <NewsletterIcon width={16} height={16} className="text-cream" />
-            </Link>
+            </Button>
           </div>
 
           <button

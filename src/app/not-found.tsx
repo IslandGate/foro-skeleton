@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/Button';
 
 interface DigitData {
   char: string;
@@ -113,12 +114,14 @@ export default function NotFound() {
           Well, this is awkward...
         </h1>
         
-        <button
-          className="px-8 py-4 rounded-2xl font-medium font-space-grotesk bg-mauve text-white text-xl transition-all duration-200 hover:brightness-90 hover:shadow-md transition-transform duration-300 ease-in-out hover:scale-105 shadow-sm border-1 border-black "
+        <Button
+          bg="mauve"
+          size="lg"
+          className="hover:scale-105 shadow-sm"
           onClick={() => window.history.back()}
         >
           Take me back...
-        </button>
+        </Button>
       </div>
     </div>
   );
