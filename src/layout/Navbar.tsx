@@ -72,7 +72,7 @@ export default function Navbar({
     <header className="sticky top-0 z-50 w-full">
       <div
         className={`absolute left-0 top-0 w-full -z-10 bg-white/70 backdrop-blur-md transition-[height] duration-250 ease-out ${
-          menuOpen ? "h-[335px] lg:h-full" : "h-full"
+          menuOpen ? "h-80 lg:h-full" : "h-full"
         }`}
       />
 
@@ -87,7 +87,7 @@ export default function Navbar({
                   e.preventDefault();
                   handleNavClick(link.href);
                 }}
-                className="font-space-grotesk text-base font-medium text-black transition-opacity hover:opacity-60 transition-transform duration-300 ease-in-out hover:scale-105"
+                className="font-space-grotesk text-base font-medium text-black hover:opacity-60 transition-transform duration-300 ease-in-out hover:scale-105"
               >
                 {link.label}
               </Link>
@@ -160,7 +160,7 @@ export default function Navbar({
         id="mobile-menu"
         className={`absolute left-0 top-full w-full transition-all duration-250 ease-out lg:hidden ${
           menuOpen
-            ? "max-h-[500px] opacity-100 translate-y-0"
+            ? "max-h-125 opacity-100 translate-y-0"
             : "max-h-0 opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
@@ -174,7 +174,7 @@ export default function Navbar({
                 setMenuOpen(false);
                 handleNavClick(link.href);
               }}
-              className="font-space-grotesk text-xl font-medium text-black transition-opacity duration-200 hover:opacity-60 transition-transform duration-300 ease-in-out hover:scale-105"
+              className="font-space-grotesk text-xl font-medium text-black duration-200 hover:opacity-60 transition-transform ease-in-out hover:scale-105"
             >
               {link.label}
             </Link>

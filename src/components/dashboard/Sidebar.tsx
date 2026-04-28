@@ -49,7 +49,7 @@ export default function Sidebar() {
         {/* Toggle expand button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="absolute right-0 translate-x-1/2 top-1/2 transform -translate-y-1/2 bg-dark-cream brightness-85 hover:bg-dark-cream hover:brightness-80 transition-all duration-300 ease-in-out rounded-r-md rounded-l-md py-6 px-1 flex items-center justify-center cursor-pointer shadow-sm z-10"
+          className="absolute right-0 translate-x-1/2 top-1/2 transform -translate-y-1/2 bg-dark-cream brightness-85 hover:bg-dark-cream hover:brightness-80 transition-all duration-300 ease-in-out hover:scale-105 rounded-r-md rounded-l-md py-6 px-1 flex items-center justify-center cursor-pointer shadow-sm z-10"
           aria-label="Toggle Sidebar"
         >
           <span className="text-xl font-bold">{isOpen ? "‹" : "›"}</span>
@@ -70,7 +70,7 @@ export default function Sidebar() {
                 alt="Il Foro Logo"
                 width={120}
                 height={65}
-                className="object-contain"
+                className="object-contain transition-all ease-in-out hover:scale-105 duration-300"
                 priority
               />
             ) : (
@@ -79,7 +79,7 @@ export default function Sidebar() {
                 alt="Il Foro Face Icon"
                 width={36}
                 height={36}
-                className="object-contain"
+                className="object-contain transition-all duration-300 ease-in-out hover:scale-105"
                 priority
               />
             )}
@@ -92,7 +92,7 @@ export default function Sidebar() {
             <Link
               key={link.label}
               href={link.href}
-              className={`flex items-center hover:opacity-70 transition-all ${
+              className={`flex items-center hover:opacity-70 transition-all duration-300 ease-in-out hover:scale-105 ${
                 isOpen ? "justify-start" : "justify-center"
               }`}
             >
@@ -101,7 +101,7 @@ export default function Sidebar() {
                   src={link.iconSrc}
                   alt={`${link.label} icon`}
                   fill
-                  className="object-contain"
+                  className="object-contain transition-all duration-300 ease-in-out hover:scale-105"
                 />
               </div>
 
@@ -130,7 +130,7 @@ export default function Sidebar() {
             <Link
               key={link.label}
               href={link.href}
-              className={`flex items-center hover:opacity-70 transition-all ${
+              className={`flex items-center hover:opacity-70 transition-all duration-300 ease-in-out hover:scale-105 ${
                 isOpen ? "justify-start" : "justify-center"
               }`}
             >
@@ -139,7 +139,7 @@ export default function Sidebar() {
                   src={link.iconSrc}
                   alt={`${link.label} icon`}
                   fill
-                  className="object-contain"
+                  className="object-contain transition-all duration-300 ease-in-out hover:scale-105"
                 />
               </div>
 
