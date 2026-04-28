@@ -89,18 +89,19 @@ export const mockCompetitions: CompetitionCardData[] = [
 ];
 
 export default function Dashboard() {
-  return (
-    <div className="flex min-h-screen bg-cream">
-      <Sidebar />
+    return (
+        <div className="flex min-h-screen bg-cream">
+  <span className="sticky top-0 h-screen">
+    <Sidebar />
+  </span>
 
-      <main className="flex-1 p-8">
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mockCompetitions.map((comp, index) => (
-            <CompetitionCard key={index} data={comp} />
-          ))}
-        </div>
-      </main>
+  <main className="flex-1 p-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {mockCompetitions.map((comp, index) => (
+        <CompetitionCard key={index} data={comp} />
+      ))}
     </div>
-  );
+  </main>
+</div>
+    );
 }
