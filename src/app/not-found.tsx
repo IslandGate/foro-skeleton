@@ -4,52 +4,89 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 interface DigitData {
+  id: string;
   char: string;
   x: number;
   y: number;
   rotation: number;
 }
 
+const randomWeighted = () => (Math.random() + Math.random() + Math.random()) / 3;
+
+const createDigit = (char: string, existingPositions: DigitData[], isInitial: boolean): DigitData => {
+  let placed = false;
+  let attempts = 0;
+  let x = 0;
+  let y = 0;
+  const minDistance = 15;
+
+  while (!placed && attempts < 50) {
+    if (isInitial) {
+      x = 10 + randomWeighted() * 30; 
+      y = 5 + randomWeighted() * 80;
+    } else {
+      // spread out more if not 404.
+      x = 2 + Math.random() * 43; 
+      y = 5 + Math.random() * 80;
+    }
+
+    let overlap = false;
+    for (const p of existingPositions) {
+      const distance = Math.sqrt(Math.pow(p.x - x, 2) + Math.pow(p.y - y, 2));
+      if (distance < minDistance) {
+        overlap = true;
+        break;
+      }
+    }
+
+    if (!overlap) {
+      placed = true;
+    }
+    
+    attempts++;
+  }
+
+  return {
+    id: Math.random().toString(36).substring(2, 9),
+    char,
+    x,
+    y,
+    rotation: Math.floor(Math.random() * 90) - 60,
+  };
+};
+
 export default function NotFound() {
   const constraintsRef = useRef<HTMLDivElement>(null);
   const [digitsData, setDigitsData] = useState<DigitData[]>([]);
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
-  const randomWeighted = () => (Math.random() + Math.random() + Math.random()) / 3;
-
+  // 1. Initial "404" setup
   useEffect(() => {
     const chars = ['4', '0', '4'];
-    const positions: DigitData[] = [];
-    const minDistance = 15;
+    const initialPositions: DigitData[] = [];
 
     chars.forEach((char) => {
-      let placed = false;
-      let attempts = 0;
-
-      while (!placed && attempts < 50) {
-        const x = 10 + randomWeighted() * 30; 
-        const y = 5 + randomWeighted() * 80;
-
-        let overlap = false;
-        for (const p of positions) {
-          const distance = Math.sqrt(Math.pow(p.x - x, 2) + Math.pow(p.y - y, 2));
-          if (distance < minDistance) {
-            overlap = true;
-            break;
-          }
-        }
-
-        if (!overlap) {
-          positions.push({char, x, y, rotation: Math.floor(Math.random() * 90) - 60,});
-          placed = true;
-        }
-        
-        attempts++;
-      }
+      // passed true for intial
+      initialPositions.push(createDigit(char, initialPositions, true));
     });
 
-    setDigitsData(positions);
+    setDigitsData(initialPositions);
     setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (/^[0-9]$/.test(e.key)) {
+        setDigitsData((prev) => {
+          // pass false after initial
+          const newDigit = createDigit(e.key, prev, false);
+          return [...prev, newDigit];
+        });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   return (
@@ -58,9 +95,9 @@ export default function NotFound() {
       ref={constraintsRef}
     >
       {/* 404 */}
-      {isMounted && digitsData.map((item, index) => (
+      {isMounted && digitsData.map((item) => (
         <motion.div
-          key={index}
+          key={item.id}
           className="absolute font-space-grotesk leading-[0.3] text-black text-[14rem] md:text-[18rem] font-bold cursor-grab z-50 flex items-center justify-center w-fit h-fit"
           style={{ 
             left: `${item.x}%`,
@@ -114,7 +151,7 @@ export default function NotFound() {
         </h1>
         
         <button
-          className="px-8 py-4 rounded-2xl font-medium font-space-grotesk bg-mauve text-white text-xl transition-all hover:brightness-90 hover:shadow-md duration-300 ease-in-out hover:scale-105 shadow-sm border border-black "
+          className="px-8 py-4 rounded-2xl font-medium font-space-grotesk bg-mauve text-white text-xl transition-all duration-300 hover:brightness-90 hover:shadow-md ease-in-out hover:scale-105 shadow-sm border-1 border-black "
           onClick={() => window.history.back()}
         >
           Take me back...
