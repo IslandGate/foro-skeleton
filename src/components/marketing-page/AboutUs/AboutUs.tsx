@@ -20,7 +20,7 @@ export default function HeroAboutUs({
 }: HeroAboutUsProps) {
   return (
     <section
-      className="mx-auto max-w-7xl px-4 py-8 md:px-8 lg:px-12 scroll-mt-110"
+      className="mx-auto max-w-7xl px-4 py-8 md:px-8 lg:px-12 scroll-mt-30"
       id="about"
     >
       <h2 className="font-garamond mb-6 text-5xl font-medium leading-tight text-black md:mb-10 md:text-6xl lg:text-7xl">
