@@ -183,9 +183,6 @@ export default function Navbar({
         </div>
       </nav>
 
-      {/* Mobile Menu Dropdown
-        Now fully integrated with the frosted glass background and border/shadow logic.
-      */}
       <div
         id="mobile-menu"
         className={`absolute left-0 top-full w-full transition-all duration-300 ease-out lg:hidden bg-white/70 backdrop-blur-md ${
