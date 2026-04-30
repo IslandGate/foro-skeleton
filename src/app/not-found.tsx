@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/Button';
+import { useRouter } from 'next/navigation';
 
 interface DigitData {
   id: string;
@@ -57,6 +58,7 @@ const createDigit = (char: string, existingPositions: DigitData[], isInitial: bo
 };
 
 export default function NotFound() {
+  const router = useRouter();
   const constraintsRef = useRef<HTMLDivElement>(null);
   const [digitsData, setDigitsData] = useState<DigitData[]>([]);
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -153,7 +155,7 @@ export default function NotFound() {
         
         <Button
           className="px-8 py-4 rounded-2xl font-medium font-space-grotesk bg-mauve text-white text-xl transition-all duration-300 hover:brightness-90 hover:shadow-md ease-in-out hover:scale-105 shadow-sm border-1 border-black "
-          onClick={() => window.history.back()}
+          onClick={() => router.back()}
         >
           Take me back...
         </Button>
