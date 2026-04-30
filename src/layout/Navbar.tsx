@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/Button";
+
 export interface NavLink {
   label: string;
   href: string;
@@ -50,6 +51,20 @@ export default function Navbar({
   
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleNavClick =
     onLinkClick ??
@@ -68,17 +83,24 @@ export default function Navbar({
   const leftLinks = links.slice(0, 2);
   const rightLinks = links.slice(2);
 
+  const isNavActive = isScrolled || menuOpen;
+
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <header className="fixed top-0 z-50 w-full transition-all duration-300">
       <div
-        className={`absolute left-0 top-0 w-full -z-10 bg-white/70 backdrop-blur-md transition-[height] duration-250 ease-out ${
-          menuOpen ? "h-80 lg:h-full" : "h-full"
-        }`}
+        className={`absolute left-0 top-0 w-full h-full -z-10 transition-all duration-300 ease-out ${
+          isNavActive ? "bg-white/70 backdrop-blur-md opacity-100" : "bg-transparent opacity-0"
+        } ${isScrolled && !menuOpen ? "shadow-sm" : ""}`}
       />
 
-      <nav className="relative z-10 w-full px-6 py-8 lg:px-12">
-        <div className="mx-auto max-w-7xl flex justify-between items-center gap-4 lg:gap-10">
-          <div className="hidden items-center gap-8 lg:flex flex-1 justify-end">
+      <nav className={`relative z-10 w-full px-6 lg:px-12 transition-all duration-300 ease-out ${
+        isScrolled ? "py-4" : "py-8"
+      }`}>
+        <div className="mx-auto max-w-7xl flex justify-between items-center transition-all duration-300 gap-4 lg:gap-10">
+          
+          <div className={`hidden items-center lg:flex flex-1 justify-end transition-all duration-300 ease-out ${
+            isScrolled ? "gap-8" : "gap-12"
+          }`}>
             {leftLinks.map((link) => (
               <Link
                 key={link.href}
@@ -112,12 +134,16 @@ export default function Navbar({
                 width={160}
                 height={160}
                 priority
-                className="h-auto w-20 sm:w-24 lg:w-28 object-contain transition-transform duration-300 ease-in-out hover:scale-105 hover:brightness-80"
+                className={`h-auto object-contain transition-all duration-300 ease-in-out hover:scale-105 hover:brightness-80 ${
+                  isScrolled ? "w-16 sm:w-20 lg:w-24" : "w-20 sm:w-24 lg:w-28"
+                }`}
               />
             </Link>
           </div>
 
-          <div className="hidden items-center gap-8 lg:flex flex-1 justify-start">
+          <div className={`hidden items-center lg:flex flex-1 justify-start transition-all duration-300 ease-out ${
+            isScrolled ? "gap-8" : "gap-12"
+          }`}>
             {rightLinks.map((link) => (
               <Link
                 key={link.href}
@@ -140,8 +166,9 @@ export default function Navbar({
           </div>
 
           <button
-            className="flex flex-col gap-1.5 p-2 lg:hidden absolute right-6"
+            className="flex flex-col gap-1.5 p-2 lg:hidden absolute right-6 z-50"
             onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
           >
             <span
               className={`block h-0.5 w-6 bg-black transition-all ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
@@ -158,13 +185,13 @@ export default function Navbar({
 
       <div
         id="mobile-menu"
-        className={`absolute left-0 top-full w-full transition-all duration-250 ease-out lg:hidden ${
+        className={`absolute left-0 top-full w-full transition-all duration-300 ease-out lg:hidden bg-white/70 backdrop-blur-md ${
           menuOpen
-            ? "max-h-125 opacity-100 translate-y-0"
+            ? "max-h-[80vh] opacity-100 translate-y-0 py-6 border-t border-black/10 shadow-md"
             : "max-h-0 opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col items-start gap-4 pl-8 pr-8">
+        <div className="flex flex-col items-start gap-6 pl-8 pr-8">
           {links.map((link) => (
             <Link
               key={link.href}
