@@ -1,56 +1,91 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 
-export interface ProfilePictureProps {
+export interface ProfilePreviewProps {
+  firstName?: string;
+  surname?: string;
   username?: string;
   email?: string;
-  profileImage?: string; 
-  onPhotoChange?: () => void;
+  age?: number | null;
+  grade?: string;
+  profileImageUrl?: string | null;
 }
 
-export default function ProfilePicture({
-  username = "Username",
-  email = "Mail",
-  profileImage,
-  onPhotoChange,
-}: ProfilePictureProps) {
+export default function ProfilePreview({
+  firstName = "First Name",
+  surname = "Surname",
+  username = "username",
+  email = "hello@example.com",
+  age = null,
+  grade = "Grade",
+  profileImageUrl = null,
+}: ProfilePreviewProps) {
+  
+  // combine names for display, fallback to a placeholder if empty
+  const displayName = firstName || surname ? `${firstName} ${surname}`.trim() : "Your Name";
+
   return (
-    <div className="mx-auto w-full max-w-6xl overflow-hidden rounded-xl border border-gray-800 bg-cream p-8">
+    <div className="mx-auto w-full max-w-6xl overflow-hidden rounded-xl border border-gray-800 bg-cream p-8 select-none">
       <h2 className="mb-8 font-garamond text-3xl font-bold text-black sm:text-4xl">
-        Profile Picture
+        Profile Preview
       </h2>
 
-      <div className="flex items-center gap-6">
-        <button
-          onClick={onPhotoChange}
-          aria-label="Change profile picture"
-          className="relative flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#D4D4D4] transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-[#F2EFE6]"
-        >
-          {profileImage ? (
+      <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+        
+        {/* profile image */}
+        <div className="relative flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-full border border-gray-800 bg-[#D4D4D4]">
+          {profileImageUrl ? (
             <Image
-              src={profileImage}
+              src={profileImageUrl}
               alt={`${username}'s profile picture`}
               fill
               className="object-cover"
               sizes="112px"
             />
           ) : (
-            // if no image, use this as placeholder.
-            <div className="h-full w-full bg-gray-300" />
+            // Fallback placeholder icon
+            <svg 
+              className="h-12 w-12 text-gray-500" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor" 
+              strokeWidth="1.5"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
           )}
-        </button>
-
-        <div className="flex flex-col gap-0.5">
-          <span className="font-space-grotesk text-2xl font-semibold text-gray-900">
-            {username}
-          </span>
-          <span className="font-space-grotesk text-lg text-gray-500">
-            {email}
-          </span>
-          <span className="font-space-grotesk text-md text-gray-400 italic">
-            Tap photo to change
-          </span>
         </div>
+
+        {/* profile details */}
+        <div className="flex flex-col gap-1">
+          <span className="font-space-grotesk text-2xl font-semibold text-gray-900">
+            {displayName}
+          </span>
+          <span className="font-space-grotesk text-lg text-gray-600">
+            @{username || "username"}
+          </span>
+          
+          {/* info Badges (Only show if data exists) */}
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            {email && (
+              <span className="inline-flex items-center rounded-md border border-gray-300 bg-black/5 px-2.5 py-1 font-space-grotesk text-sm text-gray-800">
+                {email}
+              </span>
+            )}
+            {age && (
+              <span className="inline-flex items-center rounded-md border border-gray-300 bg-black/5 px-2.5 py-1 font-space-grotesk text-sm text-gray-800">
+                {age} years old
+              </span>
+            )}
+            {grade && (
+              <span className="inline-flex items-center rounded-md border border-gray-300 bg-black/5 px-2.5 py-1 font-space-grotesk text-sm text-gray-800">
+                {grade}
+              </span>
+            )}
+          </div>
+        </div>
+
       </div>
     </div>
   );

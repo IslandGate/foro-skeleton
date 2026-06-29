@@ -2,25 +2,25 @@
 import React from "react";
 import { Button } from "@/components/Button";
 
-// Add logic to interact with backend. 
+// Add logic to interact with backend.
 
 export default function SaveDiscard() {
     return (
-      <div className="flex flex-row mx-auto w-full max-w-6xl gap-5">
+      <div className="mx-auto flex w-full max-w-6xl items-center gap-6 pt-2 pb-12">
         <Button
           href="/"
           bg="olive"
-          size="lg"
-          className="hover:scale-102 w-full sm:w-64"
+          size="md"
+          className="hover:scale-102"
         >
           Save Changes
         </Button>
 
         <Button
           href="/"
-          bg="mauve"
-          size="lg"
-          className="hover:scale-102 w-full sm:w-64"
+          bg="white"
+          size="md"
+          className="border-red-400 text-red-600 hover:bg-red-50 hover:shadow-none"
         >
           Discard Changes
         </Button>
