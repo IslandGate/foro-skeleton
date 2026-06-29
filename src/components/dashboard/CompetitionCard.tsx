@@ -9,8 +9,6 @@ import CopyToClipboardPopup from "./CopyToClipboardPopup";
 import { createPortal } from "react-dom";
 import { useConfetti } from "@/hooks/useConfetti";
 
-
-
 export type BadgeTag = "Popular" | "Elite" | "New" | "Tech" | "Math" | "Science" | "Humanities" | "Research" | "Medical" | "Finance" | "High-Stakes"; // change to actual tags cuz im just copying whatever the dummy data says this makes no sense irl
 export type DateString = `${number}-${number}-${number}`;
 export type PrizeType = `$${string} Cash` | "Certificate" | "Scholarship";
