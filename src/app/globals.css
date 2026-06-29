@@ -9,8 +9,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Map the CSS variables from fonts.ts to Tailwind names */
-  --font-garamond: 'EB Garamond', serif;
+  /* Map the CSS variables from fonts.ts (next/font/local) to Tailwind names */
+  --font-garamond: var(--font-garamond), serif;
   --font-space-grotesk: var(--font-space-grotesk);
   --font-inter: var(--font-inter);
 
