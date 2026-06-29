@@ -8,6 +8,28 @@ export interface LanguageAndRegionProps {
   onRegionChange?: (value: string) => void;
 }
 
+const COUNTRIES = [
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia",
+  "Australia", "Austria", "Azerbaijan", "Bahrain", "Bangladesh", "Belarus", "Belgium",
+  "Bolivia", "Bosnia and Herzegovina", "Brazil", "Brunei", "Bulgaria", "Cambodia",
+  "Cameroon", "Canada", "Chile", "China", "Colombia", "Costa Rica", "Croatia", "Cuba",
+  "Cyprus", "Czech Republic", "Denmark", "Dominican Republic", "Ecuador", "Egypt",
+  "El Salvador", "Estonia", "Ethiopia", "Finland", "France", "Georgia", "Germany",
+  "Ghana", "Greece", "Guatemala", "Honduras", "Hong Kong", "Hungary", "Iceland",
+  "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica",
+  "Japan", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Latvia", "Lebanon", "Libya",
+  "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Malaysia", "Maldives", "Malta",
+  "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Myanmar",
+  "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Nigeria", "North Korea",
+  "North Macedonia", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Paraguay",
+  "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Romania",
+  "Russia", "Saudi Arabia", "Senegal", "Serbia", "Singapore", "Slovakia", "Slovenia",
+  "South Africa", "South Korea", "Spain", "Sri Lanka", "Sudan", "Sweden", "Switzerland",
+  "Syria", "Taiwan", "Thailand", "Tunisia", "Turkey", "Uganda", "Ukraine",
+  "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan",
+  "Venezuela", "Vietnam", "Yemen", "Zimbabwe",
+];
+
 export default function LanguageAndRegion({
   language = "",
   region = "",
@@ -38,10 +60,9 @@ export default function LanguageAndRegion({
         <span className="font-space-grotesk text-sm font-medium text-gray-900">Region</span>
         <select value={region} onChange={(e) => onRegionChange?.(e.target.value)} className={selectClass}>
           <option value="" disabled>Your Region</option>
-          <option value="hk">Hong Kong</option>
-          <option value="us">United States</option>
-          <option value="uk">United Kingdom</option>
-          <option value="sg">Singapore</option>
+          {COUNTRIES.map((c) => (
+            <option key={c} value={c}>{c}</option>
+          ))}
         </select>
       </label>
     </div>

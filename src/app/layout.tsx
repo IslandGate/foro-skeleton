@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import { spaceGrotesk } from "@/app/ui/fonts";
+import { ebGaramond, spaceGrotesk, inter } from "@/app/ui/fonts";
 import Script from "next/script";
 import type { Metadata } from "next";
 
@@ -14,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.className} antialiased`}>
+      <body
+        className={`${spaceGrotesk.variable} ${ebGaramond.variable} ${inter.variable} ${spaceGrotesk.className} antialiased`}
+      >
         {children}
         <Script
           src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"

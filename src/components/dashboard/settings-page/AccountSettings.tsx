@@ -16,7 +16,7 @@ export default function AccountSettings({ onDeactivate }: AccountSettingsProps) 
         <span className="font-space-grotesk text-sm font-medium text-gray-900">Deactivate account</span>
         <button
           onClick={onDeactivate}
-          className="w-full rounded-lg border border-gray-800 bg-cream px-4 py-3 text-left font-space-grotesk text-base text-gray-500 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          className="rounded-lg border border-red-300 bg-white px-5 py-2.5 font-space-grotesk text-sm font-medium text-red-600 transition-colors hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-400"
         >
           Tap to deactivate
         </button>
