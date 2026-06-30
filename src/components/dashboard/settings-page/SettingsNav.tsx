@@ -69,7 +69,7 @@ export default function SettingsNav() {
   return (
     <nav className="sticky top-8 w-56 shrink-0 self-start select-none" aria-label="Settings sections">
       <p className="mb-4 font-space-grotesk text-xs font-bold uppercase tracking-[2px] text-gray-400">
-        On this page
+        Settings
       </p>
       
       <ul className="flex flex-col gap-1 relative">
