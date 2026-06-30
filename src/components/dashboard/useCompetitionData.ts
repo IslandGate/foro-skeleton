@@ -28,11 +28,11 @@ export function useCompetitionData() {
             `Competitions fetch failed (${competitionsResponse.status})`,
           );
         }
-        if (!savedResponse.ok) {
-          throw new Error(
-            `Saved competitions fetch failed (${savedResponse.status})`,
-          );
-        }
+        // if (!savedResponse.ok) {
+        //   throw new Error(
+        //     `Saved competitions fetch failed (${savedResponse.status})`,
+        //   );
+        // }
 
         const competitionsData =
           (await competitionsResponse.json()) as CompetitionCardData[];
