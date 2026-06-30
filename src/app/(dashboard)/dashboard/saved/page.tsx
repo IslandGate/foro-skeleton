@@ -1,32 +1,15 @@
 "use client";
 import React, { useState, useMemo } from "react";
-import Sidebar from "@/components/dashboard/Sidebar"; 
-import SearchBar from "@/components/dashboard/SearchBar"; 
-import Filter, { FilterState } from "@/components/dashboard/Filter"; 
-import CompetitionCard, { CompetitionCardData } from "@/components/dashboard/CompetitionCard";
+import Sidebar from "@/components/dashboard/Sidebar";
+import SearchBar from "@/components/dashboard/SearchBar";
+import Filter, { FilterState } from "@/components/dashboard/Filter";
+import CompetitionCard from "@/components/dashboard/CompetitionCard";
+import { useCompetitionData } from "@/components/dashboard/useCompetitionData";
 
-// we could have FilterState and CompetitionCardData prop in a type.ts file if anyone wants to do that..
-
-const mockCompetitions: CompetitionCardData[] = [
-  {
-    title: "Global Robotics Championship 2026",
-    image: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?q=80&w=800",
-    tags: ["Popular", "Tech"],
-    subjects: ["Chemistry", "Physics"],
-    registerDeadline: "2026-05-15",
-    location: "San Francisco, CA (Hybrid)",
-    prizeType: "$50,000 Cash",
-    groupSize: "Team (3-5 members)",
-    information: "Design and program autonomous robots for complex navigation challenges.",
-    studentsCount: 1500,
-    competitionWebsite: "https://google.com"
-  },
-];
-
-export default function Dashboard() {
+export default function SavedCompetitions() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  
+  const { competitions, savedCompetitionIds, isLoading, error, toggleSaved } = useCompetitionData();
   const [filters, setFilters] = useState<FilterState>({
     subjects: [],
     location: "",
@@ -35,10 +18,13 @@ export default function Dashboard() {
     teamSize: null,
   });
 
-  const filteredCompetitions = useMemo(() => {
-    return mockCompetitions.filter((comp) => {
+  const savedCompetitions = useMemo(
+    () => competitions.filter((comp) => savedCompetitionIds.includes(comp.id)),
+    [competitions, savedCompetitionIds],
+  );
 
-      // search
+  const filteredCompetitions = useMemo(() => {
+    return savedCompetitions.filter((comp) => {
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
         if (!comp.title.toLowerCase().includes(query) && !comp.information.toLowerCase().includes(query)) {
@@ -46,53 +32,44 @@ export default function Dashboard() {
         }
       }
 
-      // location
       if (filters.location) {
         if (!comp.location.toLowerCase().includes(filters.location.toLowerCase())) {
           return false;
         }
       }
 
-      // subjects
       if (filters.subjects.length > 0) {
         const hasMatchingSubject = comp.subjects.some((sub) => filters.subjects.includes(sub));
         if (!hasMatchingSubject) return false;
       }
 
-      // prizes
       if (filters.prizes.length > 0) {
         const matchesPrize = filters.prizes.some((prize) => comp.prizeType.includes(prize));
         if (!matchesPrize) return false;
       }
 
-      // group size checks
       const hasGroupFilters = filters.groupTypes.length > 0 || filters.teamSize !== null;
       if (hasGroupFilters) {
         let matchesGroup = false;
 
-        // match the group size string with option
         if (filters.groupTypes.includes(comp.groupSize)) {
           matchesGroup = true;
         }
 
-        // match the group size range with typed option
         if (!matchesGroup && comp.groupSize.startsWith("Team")) {
-          const bounds = comp.groupSize.match(/\d+/g); 
+          const bounds = comp.groupSize.match(/\d+/g);
           if (bounds && bounds.length >= 2) {
             const min = parseInt(bounds[0], 10);
             const max = parseInt(bounds[1], 10);
-            
-            //  if typed team size fits the range
+
             if (filters.teamSize !== null && filters.teamSize >= min && filters.teamSize <= max) {
               matchesGroup = true;
             }
 
-            // if Individual is checked, does team range include 1?
             if (filters.groupTypes.includes("Individual") && min <= 1 && max >= 1) {
               matchesGroup = true;
             }
 
-            // if Individual is checked, does team range include 1?
             if (filters.groupTypes.includes("Duo (2 members)") && min <= 2 && max >= 2) {
               matchesGroup = true;
             }
@@ -102,9 +79,9 @@ export default function Dashboard() {
         if (!matchesGroup) return false;
       }
 
-      return true; 
+      return true;
     });
-  }, [searchQuery, filters]);
+  }, [savedCompetitions, searchQuery, filters]);
 
   return (
     <div className="flex min-h-screen bg-cream">
@@ -114,34 +91,39 @@ export default function Dashboard() {
 
       <main className="flex-1 p-8">
         <div className="max-w-7xl mx-auto">
-
           <h1 className="font-garamond font-semibold text-2xl p-2">Saved Competitions</h1>
-          
+
           <SearchBar
             searchQuery={searchQuery}
             onSearchChange={setSearchQuery}
-            isFilterOpen={isFilterOpen} 
-            toggleFilter={() => setIsFilterOpen(!isFilterOpen)} 
+            isFilterOpen={isFilterOpen}
+            toggleFilter={() => setIsFilterOpen(!isFilterOpen)}
           />
-          
-          <Filter 
-            isOpen={isFilterOpen} 
-            filters={filters} 
-            setFilters={setFilters} 
-          />
-          
+
+          <Filter isOpen={isFilterOpen} filters={filters} setFilters={setFilters} />
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCompetitions.length > 0 ? (
-              filteredCompetitions.map((comp, index) => (
-                <CompetitionCard key={index} data={comp} />
+            {isLoading ? (
+              <div className="col-span-full py-20 text-center text-gray-500 font-space-grotesk">
+                Loading saved competitions...
+              </div>
+            ) : error ? (
+              <div className="col-span-full py-20 text-center text-red-500 font-space-grotesk">{error}</div>
+            ) : filteredCompetitions.length > 0 ? (
+              filteredCompetitions.map((comp) => (
+                <CompetitionCard
+                  key={comp.id}
+                  data={comp}
+                  initialSaved={true}
+                  onToggleSaved={() => toggleSaved(comp.id, true)}
+                />
               ))
             ) : (
               <div className="col-span-full py-20 text-center text-gray-500 font-space-grotesk">
-                No competitions found matching your criteria.
+                No saved competitions found.
               </div>
             )}
           </div>
-
         </div>
       </main>
     </div>

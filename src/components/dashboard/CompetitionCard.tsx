@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import SubjectTag, { type SubjectName } from "./SubjectTag";
 import { Button } from "@/components/Button";
@@ -9,15 +9,30 @@ import CopyToClipboardPopup from "./CopyToClipboardPopup";
 import { createPortal } from "react-dom";
 import { useConfetti } from "@/hooks/useConfetti";
 
-export type BadgeTag = "Popular" | "Elite" | "New" | "Tech" | "Math" | "Science" | "Humanities" | "Research" | "Medical" | "Finance" | "High-Stakes"; // change to actual tags cuz im just copying whatever the dummy data says this makes no sense irl
+export type BadgeTag =
+  | "Popular"
+  | "Elite"
+  | "New"
+  | "Tech"
+  | "Math"
+  | "Science"
+  | "Humanities"
+  | "Research"
+  | "Medical"
+  | "Finance"
+  | "High-Stakes"; // change to actual tags cuz im just copying whatever the dummy data says this makes no sense irl
 export type DateString = `${number}-${number}-${number}`;
 export type PrizeType = `$${string} Cash` | "Certificate" | "Scholarship";
-export type GroupType = "Individual" | "Duo (2 members)" | `Team (${number}-${number} members)`;
+export type GroupType =
+  | "Individual"
+  | "Duo (2 members)"
+  | `Team (${number}-${number} members)`;
 
 export interface CompetitionCardData {
+  id: string;
   title: string;
   image: string;
-  tags: BadgeTag[]; // unstandarized, what badges are we taking? implement that into filter later.
+  tags: BadgeTag[]; // unstandardized, what badges are we taking? implement that into filter later.
   subjects: SubjectName[];
   registerDeadline: DateString;
   location: string;
@@ -25,30 +40,49 @@ export interface CompetitionCardData {
   groupSize: GroupType;
   information: string;
   studentsCount: number;
-  competitionWebsite: string; 
+  competitionWebsite: string;
 }
 
 interface CompetitionCardProps {
   data: CompetitionCardData;
   rotation?: number;
+  initialSaved?: boolean;
+  onToggleSaved?: () => void;
 }
 
 // temp colours for footer avatars
 const AVATAR_COLORS = ["#60a5fa", "#f472b6", "#4ade80"];
 
-
-
-export default function CompetitionCard({ data, rotation = 0 }: CompetitionCardProps) {
-  const [isSaved, setIsSaved] = useState(false);
+export default function CompetitionCard({
+  data,
+  rotation = 0,
+  initialSaved = false,
+  onToggleSaved,
+}: CompetitionCardProps) {
+  const [isSaved, setIsSaved] = useState(initialSaved);
   const [showPopup, setShowPopup] = useState(false);
   const shareButtonRef = useRef<HTMLButtonElement>(null);
   const triggerConfetti = useConfetti({ particleCount: 150, spread: 60 });
 
+  useEffect(() => {
+    setIsSaved(initialSaved);
+  }, [initialSaved]);
+
   if (!data) return null;
 
-  const handleSave = (e: React.MouseEvent) => {
+  const handleSave = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsSaved(!isSaved);
+    const nextValue = !isSaved;
+    setIsSaved(nextValue);
+
+    if (onToggleSaved) {
+      try {
+        await onToggleSaved();
+      } catch (err) {
+        setIsSaved(!nextValue);
+        console.error("Failed to save competition", err);
+      }
+    }
   };
 
   const handleCopy = async (text: string) => {
