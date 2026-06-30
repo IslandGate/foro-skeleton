@@ -13,10 +13,12 @@ export default function AccountSettings({ onDeactivate }: AccountSettingsProps) 
       </h2>
 
       <div className="flex flex-col gap-1.5">
-        <span className="font-space-grotesk text-sm font-medium text-gray-900">Deactivate account</span>
+        <span className="font-space-grotesk text-sm font-medium text-gray-900">
+          Deactivate account
+        </span>
         <button
           onClick={onDeactivate}
-          className="rounded-lg border border-red-300 bg-white px-5 py-2.5 font-space-grotesk text-sm font-medium text-red-600 transition-colors hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-400"
+          className="rounded-lg border border-red-300 bg-white px-5 py-2.5 font-space-grotesk text-sm font-medium text-red-600 transition-colors hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-400 transition-transform duration-300 ease-in-out hover:scale-102"
         >
           Tap to deactivate
         </button>

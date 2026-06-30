@@ -20,7 +20,7 @@ export default function SaveDiscard() {
           href="/dashboard/settings"
           bg="white"
           size="md"
-          className="border-red-400 text-red-600 hover:bg-red-50 hover:shadow-none"
+          className="border-red-400 text-red-600 hover:bg-red-50 hover:shadow-none hover:scale-102"
         >
           Discard Changes
         </Button>
