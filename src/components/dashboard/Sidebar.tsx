@@ -35,11 +35,6 @@ const bottomLinks: SideBarItem[] = [
         href: "/dashboard/settings",
         iconSrc: "/dashboard-assets/sidebar-assets/SettingsIcon.svg",
     },
-    {
-        label: "Back",
-        href: "/back",
-        iconSrc: "/dashboard-assets/sidebar-assets/back-arrow.svg",
-    }
 ];
 
 export default function Sidebar() {
