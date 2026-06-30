@@ -9,20 +9,20 @@ export default function SaveDiscard() {
       <div className="mx-auto flex w-full max-w-6xl items-center gap-6 pt-2 pb-12">
         <Button
           href="/dashboard/settings"
-          bg="olive"
-          size="md"
-          className="hover:scale-102"
-        >
-          Save Changes
-        </Button>
-
-        <Button
-          href="/dashboard/settings"
           bg="white"
           size="md"
           className="border-red-400 text-red-600 hover:bg-red-50 hover:shadow-none hover:scale-102"
         >
           Discard Changes
+        </Button>
+
+        <Button
+          href="/dashboard/settings"
+          bg="olive"
+          size="md"
+          className="hover:scale-102"
+        >
+          Save Changes
         </Button>
       </div>
     );
