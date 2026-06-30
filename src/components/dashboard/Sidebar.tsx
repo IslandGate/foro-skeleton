@@ -107,7 +107,11 @@ export default function Sidebar() {
                 isOpen ? "justify-start" : "justify-center"
               }`}
             >
-              <div className="w-6 h-6 relative shrink-0">
+              <div
+                className={`relative shrink-0 ${
+                  link.label === "Dashboard" ? "w-5 h-5" : "w-6 h-6"
+                }`}
+              >
                 <Image
                   src={link.iconSrc}
                   alt={`${link.label} icon`}
