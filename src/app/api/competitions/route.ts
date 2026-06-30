@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server';
-import { createClient } from '@/utils/supabase/server';
+import { NextResponse } from "next/server";
+import { createClient } from "@/utils/supabase/server";
 
 function normalizeRow(row: Record<string, any>) {
   return {
@@ -21,16 +21,14 @@ function normalizeRow(row: Record<string, any>) {
 export async function GET() {
   const supabase = await createClient();
 
-  const { data, error } = await supabase.from('competitions').select('*');
+  const { data, error } = await supabase.from("competitions").select("*");
 
   if (error) {
     return NextResponse.json(
-      { error: error.message ?? 'Unable to fetch competitions.' },
+      { error: error.message ?? "Unable to fetch competitions." },
       { status: 500 },
     );
   }
 
-  return NextResponse.json(
-    (data ?? []).map((row) => normalizeRow(row)),
-  );
+  return NextResponse.json((data ?? []).map((row) => normalizeRow(row)));
 }

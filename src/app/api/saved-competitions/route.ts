@@ -24,7 +24,10 @@ export async function GET() {
     .select("competition_id");
 
   if (error) {
-    return NextResponse.json({ error: error.message ?? "Unable to fetch saved competitions." }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message ?? "Unable to fetch saved competitions." },
+      { status: 500 },
+    );
   }
 
   return NextResponse.json({
@@ -44,7 +47,10 @@ export async function POST(request: Request) {
   const competitionId = body.competitionId;
 
   if (!competitionId) {
-    return NextResponse.json({ error: "Missing competitionId." }, { status: 400 });
+    return NextResponse.json(
+      { error: "Missing competitionId." },
+      { status: 400 },
+    );
   }
 
   const supabase = await createClient();
@@ -54,7 +60,10 @@ export async function POST(request: Request) {
   });
 
   if (error) {
-    return NextResponse.json({ error: error.message ?? "Unable to save competition." }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message ?? "Unable to save competition." },
+      { status: 500 },
+    );
   }
 
   return NextResponse.json({ success: true });
@@ -70,7 +79,10 @@ export async function DELETE(request: Request) {
   const competitionId = body.competitionId;
 
   if (!competitionId) {
-    return NextResponse.json({ error: "Missing competitionId." }, { status: 400 });
+    return NextResponse.json(
+      { error: "Missing competitionId." },
+      { status: 400 },
+    );
   }
 
   const supabase = await createClient();
@@ -81,7 +93,10 @@ export async function DELETE(request: Request) {
     .eq("user_id", user.id);
 
   if (error) {
-    return NextResponse.json({ error: error.message ?? "Unable to unsave competition." }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message ?? "Unable to unsave competition." },
+      { status: 500 },
+    );
   }
 
   return NextResponse.json({ success: true });

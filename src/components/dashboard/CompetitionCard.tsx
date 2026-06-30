@@ -9,10 +9,24 @@ import CopyToClipboardPopup from "./CopyToClipboardPopup";
 import { createPortal } from "react-dom";
 import { useConfetti } from "@/hooks/useConfetti";
 
-export type BadgeTag = "Popular" | "Elite" | "New" | "Tech" | "Math" | "Science" | "Humanities" | "Research" | "Medical" | "Finance" | "High-Stakes"; // change to actual tags cuz im just copying whatever the dummy data says this makes no sense irl
+export type BadgeTag =
+  | "Popular"
+  | "Elite"
+  | "New"
+  | "Tech"
+  | "Math"
+  | "Science"
+  | "Humanities"
+  | "Research"
+  | "Medical"
+  | "Finance"
+  | "High-Stakes"; // change to actual tags cuz im just copying whatever the dummy data says this makes no sense irl
 export type DateString = `${number}-${number}-${number}`;
 export type PrizeType = `$${string} Cash` | "Certificate" | "Scholarship";
-export type GroupType = "Individual" | "Duo (2 members)" | `Team (${number}-${number} members)`;
+export type GroupType =
+  | "Individual"
+  | "Duo (2 members)"
+  | `Team (${number}-${number} members)`;
 
 export interface CompetitionCardData {
   id: string;
@@ -39,9 +53,12 @@ interface CompetitionCardProps {
 // temp colours for footer avatars
 const AVATAR_COLORS = ["#60a5fa", "#f472b6", "#4ade80"];
 
-
-
-export default function CompetitionCard({ data, rotation = 0, initialSaved = false, onToggleSaved }: CompetitionCardProps) {
+export default function CompetitionCard({
+  data,
+  rotation = 0,
+  initialSaved = false,
+  onToggleSaved,
+}: CompetitionCardProps) {
   const [isSaved, setIsSaved] = useState(initialSaved);
   const [showPopup, setShowPopup] = useState(false);
   const shareButtonRef = useRef<HTMLButtonElement>(null);

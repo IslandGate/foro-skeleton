@@ -24,20 +24,29 @@ export function useCompetitionData() {
         ]);
 
         if (!competitionsResponse.ok) {
-          throw new Error(`Competitions fetch failed (${competitionsResponse.status})`);
+          throw new Error(
+            `Competitions fetch failed (${competitionsResponse.status})`,
+          );
         }
         if (!savedResponse.ok) {
-          throw new Error(`Saved competitions fetch failed (${savedResponse.status})`);
+          throw new Error(
+            `Saved competitions fetch failed (${savedResponse.status})`,
+          );
         }
 
-        const competitionsData = (await competitionsResponse.json()) as CompetitionCardData[];
-        const savedPayload = (await savedResponse.json()) as { savedCompetitionIds: string[] };
+        const competitionsData =
+          (await competitionsResponse.json()) as CompetitionCardData[];
+        const savedPayload = (await savedResponse.json()) as {
+          savedCompetitionIds: string[];
+        };
 
         setCompetitions(competitionsData ?? []);
         setSavedCompetitionIds(savedPayload.savedCompetitionIds ?? []);
       } catch (err) {
         setError(
-          err instanceof Error ? err.message : "Unable to load competitions at this time.",
+          err instanceof Error
+            ? err.message
+            : "Unable to load competitions at this time.",
         );
       } finally {
         setIsLoading(false);
@@ -57,12 +66,16 @@ export function useCompetitionData() {
 
     if (!response.ok) {
       const payload = await response.json().catch(() => null);
-      const message = payload?.error || `Unable to ${currentlySaved ? "unsave" : "save"} competition.`;
+      const message =
+        payload?.error ||
+        `Unable to ${currentlySaved ? "unsave" : "save"} competition.`;
       throw new Error(message);
     }
 
     setSavedCompetitionIds((prev) =>
-      currentlySaved ? prev.filter((id) => id !== competitionId) : [...prev, competitionId],
+      currentlySaved
+        ? prev.filter((id) => id !== competitionId)
+        : [...prev, competitionId],
     );
   }
 
