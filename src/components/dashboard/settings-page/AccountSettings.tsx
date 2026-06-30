@@ -3,9 +3,10 @@ import React from "react";
 
 export interface AccountSettingsProps {
   onDeactivate?: () => void;
+  onLogout?: () => void;
 }
 
-export default function AccountSettings({ onDeactivate }: AccountSettingsProps) {
+export default function AccountSettings({ onDeactivate, onLogout }: AccountSettingsProps) {
   return (
     <div className="mx-auto w-full max-w-6xl overflow-hidden rounded-xl border border-gray-800 bg-cream p-8">
       <h2 className="mb-8 font-garamond text-3xl font-bold text-black sm:text-4xl">
@@ -21,6 +22,16 @@ export default function AccountSettings({ onDeactivate }: AccountSettingsProps) 
           className="rounded-lg border border-red-300 bg-white px-5 py-2.5 font-space-grotesk text-sm font-medium text-red-600 transition-colors hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-400 transition-transform duration-300 ease-in-out hover:scale-102"
         >
           Tap to deactivate
+        </button>
+
+        <span className="font-space-grotesk text-sm font-medium text-gray-900">
+          Logout
+        </span>
+        <button
+          onClick={onLogout}
+          className="rounded-lg border border-mauve-900 bg-mauve px-5 py-2.5 font-space-grotesk text-sm font-medium text-cream transition-colors   transition-transform duration-300 ease-in-out hover:scale-102"
+        >
+          Logout
         </button>
       </div>
     </div>
