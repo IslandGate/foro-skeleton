@@ -8,7 +8,9 @@ export type SubjectName =
   | "Biology"
   | "Economics"
   | "Business"
-  | "Medicine";
+  | "Medicine"
+  | "Computer Science"
+  | "Environmental Science";
 
 interface SubjectTagProps {
   subject: SubjectName;
@@ -24,6 +26,8 @@ const SUBJECT_COLOUR: Record<SubjectName, string> = {
   Medicine: "bg-white",
   Economics: "bg-amber-400",
   Business: "bg-purple-500",
+  "Computer Science": "bg-sky-500",
+  "Environmental Science": "bg-emerald-500",
 };
 
 const SUBJECT_ICON_PATHS: Record<SubjectName, string> = {
@@ -35,6 +39,8 @@ const SUBJECT_ICON_PATHS: Record<SubjectName, string> = {
   Medicine: "/tags/Medicine.svg",
   Economics: "/tags/Econ.svg",
   Business: "/tags/Business.svg",
+  "Computer Science": "/tags/Computer_Science.svg",
+  "Environmental Science": "/tags/Environmental_Science.svg",
 };
 
 export default function SubjectTag({ subject, onRemove }: SubjectTagProps) {

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import SubjectTag from "../SubjectTag"; // Adjust the dots depending on how deep the folder is
+import SubjectTag from "./SubjectTag";
 
 // --- Types & Constants ---
 export type SubjectName =
@@ -12,7 +12,9 @@ export type SubjectName =
   | "Biology"
   | "Medicine"
   | "Economics"
-  | "Business";
+  | "Business"
+  | "Computer Science"
+  | "Environmental Science";
 
 const ALL_SUBJECTS: SubjectName[] = [
   "Maths",
@@ -23,6 +25,8 @@ const ALL_SUBJECTS: SubjectName[] = [
   "Medicine",
   "Economics",
   "Business",
+  "Computer Science",
+  "Environmental Science",
 ];
 
 // --- Filter-Style Checkbox Component ---
