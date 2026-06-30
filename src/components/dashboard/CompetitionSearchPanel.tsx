@@ -26,7 +26,7 @@ function matchesSearchQuery(comp: CompetitionCardData, query: string): boolean {
     comp.title,
     comp.location,
     comp.prizeType,
-    comp.format,
+    comp.groupSize,
     ...comp.tags,
     ...comp.subjects,
   ];
@@ -34,8 +34,8 @@ function matchesSearchQuery(comp: CompetitionCardData, query: string): boolean {
   return searchableFields.some((field) => normalize(field).includes(normalizedQuery));
 }
 
-function getGroupSize(format: string): "Solo" | "Pairs" | "Team" {
-  const normalized = normalize(format);
+function getGroupSize(groupSize: string): "Solo" | "Pairs" | "Team" {
+  const normalized = normalize(groupSize);
   if (normalized.includes("individual")) {
     return "Solo";
   }
@@ -181,7 +181,7 @@ export default function CompetitionSearchPanel({ competitions }: CompetitionSear
       }
 
       const groupSizeFilter = selected["GROUP SIZE"] ?? [];
-      if (groupSizeFilter.length > 0 && !groupSizeFilter.includes(getGroupSize(comp.format))) {
+      if (groupSizeFilter.length > 0 && !groupSizeFilter.includes(getGroupSize(comp.groupSize))) {
         return false;
       }
 
@@ -238,7 +238,7 @@ export default function CompetitionSearchPanel({ competitions }: CompetitionSear
       ) : (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredCompetitions.map((comp: CompetitionCardData) => (
-            <CompetitionCard key={comp.title} data={comp} />
+            <CompetitionCard key={comp.id} data={comp} />
           ))}
         </div>
       )}
