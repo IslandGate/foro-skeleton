@@ -13,7 +13,9 @@ export default function AccountSettings({
   onDelete,
   onLogout,
 }: AccountSettingsProps) {
-  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [confirmModalType, setConfirmModalType] = useState<"delete" | "logout" | null>(null);
+  const [deleteConfirmationText, setDeleteConfirmationText] = useState("");
+  
   const router = useRouter();
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [isToastExiting, setIsToastExiting] = useState(false);
@@ -30,8 +32,13 @@ export default function AccountSettings({
     };
   }, [successMessage]);
 
+  const handleCloseModal = () => {
+    setConfirmModalType(null);
+    setDeleteConfirmationText(""); // reset input when closing
+  };
+
   const handleConfirmDelete = async () => {
-    setIsConfirmOpen(false);
+    handleCloseModal();
     if (onDelete) {
       await onDelete();
     }
@@ -42,7 +49,8 @@ export default function AccountSettings({
     }, 1200);
   };
 
-  const handleLogout = async () => {
+  const handleConfirmLogout = async () => {
+    handleCloseModal();
     if (onLogout) {
       await onLogout();
     }
@@ -53,17 +61,19 @@ export default function AccountSettings({
     }, 1200);
   };
 
+  const isDeleteDisabled = 
+    confirmModalType === "delete" && deleteConfirmationText !== "Yes, delete my account";
+
   return (
     <div className="mx-auto w-full max-w-6xl overflow-hidden rounded-xl border border-gray-800 bg-cream p-8">
       <h2 className="mb-8 font-garamond text-3xl font-bold text-black sm:text-4xl">
         Account Settings
       </h2>
 
-      {/* Changed to flex-row and aligned items to the bottom so the buttons line up perfectly */}
       <div className="flex flex-row items-end gap-4">
         <div className="flex flex-col gap-1.5">
           <button
-            onClick={() => setIsConfirmOpen(true)}
+            onClick={() => setConfirmModalType("delete")}
             className="w-fit rounded-lg border border-red-300 bg-white px-5 py-2.5 font-space-grotesk text-sm font-medium text-red-600 hover:bg-red-50 hover:shadow-none transition-transform duration-300 ease-in-out hover:scale-102"
           >
             Delete Account
@@ -71,7 +81,7 @@ export default function AccountSettings({
         </div>
 
         <button
-          onClick={handleLogout}
+          onClick={() => setConfirmModalType("logout")}
           className="w-fit rounded-lg border border-mauve-900 bg-mauve px-5 py-2.5 font-space-grotesk text-sm font-medium text-cream transition-colors transition-transform duration-300 ease-in-out hover:scale-102"
         >
           Logout
@@ -80,7 +90,7 @@ export default function AccountSettings({
 
       {/* pop up */}
       <AnimatePresence>
-        {isConfirmOpen && (
+        {confirmModalType && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -98,22 +108,50 @@ export default function AccountSettings({
                 Are you sure?
               </h3>
               <p className="mt-2 font-space-grotesk text-sm text-gray-600">
-                This action will delete your account. You will NOT be able to
-                recover your account once you delete it.
+                {confirmModalType === "delete"
+                  ? "This action will delete your account. You will NOT be able to recover your account once you delete it."
+                  : "Are you sure you want to log out of your account?"}
               </p>
+
+              {/* type to delete account */}
+              {confirmModalType === "delete" && (
+                <div className="mt-4 flex flex-col gap-2 font-space-grotesk">
+                  <label className="text-sm font-medium text-gray-900">
+                    To confirm, type "<strong>Yes, delete my account</strong>" below:
+                  </label>
+                  <input
+                    type="text"
+                    value={deleteConfirmationText}
+                    onChange={(e) => setDeleteConfirmationText(e.target.value)}
+                    placeholder="Yes, delete my account"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-black focus:border-red-400 focus:outline-none focus:ring-1 focus:ring-red-400"
+                  />
+                </div>
+              )}
 
               <div className="mt-6 flex justify-baseline gap-3 font-space-grotesk">
                 <button
-                  onClick={() => setIsConfirmOpen(false)}
+                  onClick={handleCloseModal}
                   className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-transform duration-300 ease-in-out hover:scale-102"
                 >
                   Cancel
                 </button>
                 <button
-                  onClick={handleConfirmDelete}
-                  className="rounded-lg bg-mauve px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-transform duration-300 ease-in-out hover:scale-102"
+                  disabled={isDeleteDisabled}
+                  onClick={
+                    confirmModalType === "delete"
+                      ? handleConfirmDelete
+                      : handleConfirmLogout
+                  }
+                  className={`rounded-lg bg-mauve px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300 ease-in-out ${
+                    isDeleteDisabled
+                      ? "cursor-not-allowed opacity-50 grayscale"
+                      : "hover:scale-102"
+                  }`}
                 >
-                  Yes, delete my account
+                  {confirmModalType === "delete"
+                    ? "Yes, delete my account"
+                    : "Yes, log out"}
                 </button>
               </div>
             </motion.div>
