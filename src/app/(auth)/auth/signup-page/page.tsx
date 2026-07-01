@@ -67,7 +67,9 @@ function SignupContent() {
   useEffect(() => {
     if (!code) return;
     const next = encodeURIComponent("/signup?step=2");
-    router.replace(`/auth/callback?code=${encodeURIComponent(code)}&next=${next}`);
+    router.replace(
+      `/auth/callback?code=${encodeURIComponent(code)}&next=${next}`,
+    );
   }, [code, router]);
 
   // Detect if user is already authenticated via OAuth (came from step=2 redirect)
@@ -82,12 +84,15 @@ function SignupContent() {
         updateFormData({
           email: user.email ?? "",
           firstName: meta.full_name?.split(" ")[0] ?? meta.first_name ?? "",
-          lastName: meta.full_name?.split(" ").slice(1).join(" ") ?? meta.last_name ?? "",
+          lastName:
+            meta.full_name?.split(" ").slice(1).join(" ") ??
+            meta.last_name ??
+            "",
           username: meta.preferred_username ?? meta.name ?? "",
         });
       }
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (code) {
@@ -199,20 +204,22 @@ function SignupContent() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-olive px-6 font-space-grotesk">
         <div className="max-w-md rounded-2xl bg-cream px-10 py-12 text-center shadow-lg">
-          <Image
-            src="/icons/il-foro-face.svg"
-            alt="Il Foro Logo"
-            width={120}
-            height={120}
-            className="mx-auto mb-6 h-auto w-[100px]"
-          />
-          <h2 className="mb-3 text-4xl font-medium">
-            Check your email
-          </h2>
+          <Link href="/" className="inline-flex justify-center">
+            <Image
+              src="/icons/il-foro-face.svg"
+              alt="Il Foro Logo"
+              width={120}
+              height={120}
+              className="mx-auto mb-6 h-auto w-[100px]"
+            />
+          </Link>
+          <h2 className="mb-3 text-4xl font-medium">Check your email</h2>
           <p className="mb-6 text-base text-dark-gray/70">
             We sent a confirmation link to{" "}
-            <span className="font-semibold text-dark-gray">{formData.email}</span>.
-            Click it to activate your account, then log in.
+            <span className="font-semibold text-dark-gray">
+              {formData.email}
+            </span>
+            . Click it to activate your account, then log in.
           </p>
           <Link
             href="/login"
@@ -238,7 +245,7 @@ function SignupContent() {
             priority
           />
         </div>
-{/* Change px-[3.6%] to a fixed padding like px-8 or px-10 */}
+        {/* Change px-[3.6%] to a fixed padding like px-8 or px-10 */}
         <div className="relative z-10 px-10 pt-[55px]">
           <h1
             className={`${ebGaramond.className} text-[clamp(32px,4vw,48px)] font-medium leading-[1.1] text-black`}
@@ -253,16 +260,18 @@ function SignupContent() {
         {/* Change py-8 to py-4 and use items-center to keep things centered if there is space */}
         <div className="w-full px-6 py-4 sm:px-10 lg:px-[8%] flex flex-col justify-center min-h-full">
           {/* Header: Logo + Progress */}
-          <div className="flex items-center justify-between mb-4"> 
+          <div className="flex items-center justify-between mb-4">
             <div className="flex justify-center lg:justify-start">
-              <Image
-                src="/icons/il-foro-face.png"
-                alt="Il Foro Logo"
-                width={213}
-                height={213}
-                // Reduced max-width and height
-                className="h-auto w-[80px] sm:w-[120px] lg:w-[10vw] lg:max-w-[140px]"
-              />
+              <Link href="/" className="inline-flex">
+                <Image
+                  src="/icons/il-foro-face.png"
+                  alt="Il Foro Logo"
+                  width={213}
+                  height={213}
+                  // Reduced max-width and height
+                  className="h-auto w-[80px] sm:w-[120px] lg:w-[10vw] lg:max-w-[140px]"
+                />
+              </Link>
             </div>
 
             {/* Progress Dots */}

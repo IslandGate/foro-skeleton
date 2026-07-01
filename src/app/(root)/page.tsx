@@ -16,6 +16,7 @@ export default function Page() {
         bgImage="/images/hero-catalogue-bg.png"
         strength={1000}
         key={pathname}
+        priority
       >
         <div className="pt-24">
           <HeroWelcome />
