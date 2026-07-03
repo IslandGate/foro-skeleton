@@ -19,7 +19,7 @@ function profilePayload(userId: string, formData: SignupFormData) {
     experience_levels: formData.experienceLevels,
     previous_participation: formData.previousParticipation,
     motivations: formData.motivations,
-    willing_to_travel: formData.willingToTravel,
+    willing_to_travel: /^(yes|within)/i.test(formData.willingToTravel),
     additional_interests: formData.additionalInterests,
   };
 }

@@ -28,20 +28,29 @@ export function useCompetitionData() {
             `Competitions fetch failed (${competitionsResponse.status})`,
           );
         }
-        // if (!savedResponse.ok) {
-        //   throw new Error(
-        //     `Saved competitions fetch failed (${savedResponse.status})`,
-        //   );
-        // }
 
         const competitionsData =
           (await competitionsResponse.json()) as CompetitionCardData[];
-        const savedPayload = (await savedResponse.json()) as {
-          savedCompetitionIds: string[];
-        };
+
+        // Saved competitions require auth; a 401 is expected for visitors who
+        // haven't logged in — treat as an empty list rather than an error.
+        let savedIds: string[] = [];
+        if (savedResponse.ok) {
+          const savedPayload = (await savedResponse.json()) as {
+            savedCompetitionIds: string[];
+          };
+          savedIds = savedPayload.savedCompetitionIds ?? [];
+        } else if (savedResponse.status !== 401) {
+          // Non-401 failures (e.g. 500 from a missing table) should surface.
+          const errorPayload = await savedResponse.json().catch(() => null);
+          const message =
+            errorPayload?.error ??
+            `Saved competitions fetch failed (${savedResponse.status})`;
+          throw new Error(message);
+        }
 
         setCompetitions(competitionsData ?? []);
-        setSavedCompetitionIds(savedPayload.savedCompetitionIds ?? []);
+        setSavedCompetitionIds(savedIds);
       } catch (err) {
         setError(
           err instanceof Error

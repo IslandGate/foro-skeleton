@@ -30,15 +30,5 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  let role: string | null = null;
-  if (user) {
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role")
-      .eq("id", user.id)
-      .single();
-    role = profile?.role ?? "user";
-  }
-
-  return { user, role, response: supabaseResponse };
+  return { user, response: supabaseResponse };
 }
