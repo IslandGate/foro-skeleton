@@ -35,6 +35,12 @@ const bottomLinks: SideBarItem[] = [
     href: "/dashboard/settings",
     iconSrc: "/dashboard-assets/sidebar-assets/SettingsIcon.svg",
   },
+  {
+    label: "User Profile"
+    href: null, 
+    iconSrc: ""
+    // get user profile from backend 
+  },
 ];
 
 export default function Sidebar() {
